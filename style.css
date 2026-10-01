@@ -212,28 +212,28 @@ body.modal-open{overflow:hidden}
        (orientation:landscape) and (max-height:520px) and (max-width:900px){
   html,body{height:100dvh!important;min-height:100dvh!important;overflow:hidden!important}
   body{padding:0!important}
-  .topbar{padding:2px 8px!important;min-height:38px!important}
+  .topbar{padding:1px 8px!important;min-height:35px!important}
   .brand h1{font-size:16px!important;line-height:1!important}
   .brand p{display:none!important}
   .stats{gap:3px!important;flex-wrap:nowrap!important}.stats span{font-size:9px!important;padding:3px 5px!important}
   .game-shell{max-width:760px!important;margin:0 auto!important;padding:2px 6px 0!important;display:flex!important;flex-direction:column!important;min-height:0!important;height:calc(100dvh - 38px)!important}
-  .game-panel{max-width:760px!important;padding:2px!important;display:flex!important;flex-direction:column!important;gap:2px!important;min-height:0!important;flex:1 1 auto!important}
-  .zonebar{margin:0 auto 2px!important;max-width:220px!important;padding:2px 6px!important}
-  .toolbar{gap:2px!important;margin-bottom:2px!important}
+  .game-panel{max-width:760px!important;padding:2px!important;display:flex!important;flex-direction:column!important;gap:1px!important;min-height:0!important;flex:1 1 auto!important}
+  .zonebar{margin:0 auto 1px!important;max-width:220px!important;padding:2px 6px!important}
   .toolbar button{padding:4px 3px!important;font-size:8px!important;min-height:28px!important}
-  .quickbar{gap:2px!important;margin-bottom:2px!important}
+  .toolbar{gap:2px!important;margin-bottom:1px!important}
+  .quickbar{gap:2px!important;margin-bottom:1px!important}
   .quickbar button{padding:3px 4px!important;font-size:8px!important}
   .farm{
-    width:min(100%, calc(100dvh - 220px))!important;
-    height:min(100%, calc(100dvh - 220px))!important;
-    max-width:170px!important;
-    max-height:170px!important;
+    width:min(240px, calc(100dvh - 150px))!important;
+    height:min(240px, calc(100dvh - 150px))!important;
+    max-width:none!important;
+    max-height:none!important;
     margin:0 auto!important;
     padding:3px!important;
   }
   #mobile-move-pad{position:fixed!important;left:50%!important;bottom:50px!important;transform:translateX(-50%)!important;z-index:90!important;display:grid!important;grid-template-columns:38px 38px 38px;grid-template-rows:34px 34px;gap:3px;margin:0!important;padding:2px 3px!important;background:#ffffffea;border-radius:12px;box-shadow:0 3px 12px #0003}
   .move-btn{min-width:38px;min-height:34px;font-size:16px;box-shadow:0 1px 4px #0003}
-  #message{font-size:10px!important;min-height:16px!important;margin:1px 0!important}
+  #message{font-size:10px!important;min-height:12px!important;margin:0!important}
   footer{display:none!important}
   .dock{
     position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:4px!important;
@@ -327,8 +327,8 @@ body.modal-open{overflow:hidden}
   body{display:flex!important;flex-direction:column!important;padding:0!important}
   .topbar{
     flex:0 0 auto!important;
-    padding:2px 8px!important;
-    min-height:0!important;
+    padding:1px 8px!important;
+    min-height:35px!important;
     gap:6px!important;
     align-items:center!important
   }
@@ -354,24 +354,22 @@ body.modal-open{overflow:hidden}
     padding:2px!important;
     display:flex!important;
     flex-direction:column!important;
-    gap:2px!important
+    gap:1px!important
   }
-  .zonebar{margin:0 auto 2px!important;max-width:220px!important;padding:2px 6px!important}
+  .zonebar{margin:0 auto 1px!important;max-width:220px!important;padding:2px 6px!important}
   .zone-title{padding:4px 8px!important;min-height:28px!important;font-size:12px!important}
-  .toolbar{gap:2px!important;margin-bottom:2px!important;flex:0 0 auto!important}
+  .toolbar{gap:2px!important;margin-bottom:1px!important;flex:0 0 auto!important}
   .tool{padding:4px 2px!important;font-size:8px!important;min-width:0!important;min-height:28px!important}
   .tool span{font-size:8px!important;line-height:1!important}
-  .quickbar{gap:2px!important;margin-bottom:2px!important;flex:0 0 auto!important}
+  .quickbar{gap:2px!important;margin-bottom:1px!important;flex:0 0 auto!important}
   .quickbar button{padding:3px 4px!important;font-size:8px!important}
   .farm{
     flex:1 1 auto!important;
     min-height:0!important;
-    width:min(100%, calc(100vh - 220px))!important;
-    width:min(100%, calc(100dvh - 220px))!important;
-    height:min(100%, calc(100vh - 220px))!important;
-    height:min(100%, calc(100dvh - 220px))!important;
-    max-width:170px!important;
-    max-height:170px!important;
+    width:min(240px, calc(100dvh - 150px))!important;
+    height:min(240px, calc(100dvh - 150px))!important;
+    max-width:none!important;
+    max-height:none!important;
     margin:0 auto!important;
     padding:3px!important
   }
@@ -391,8 +389,10 @@ body.modal-open{overflow:hidden}
     border-radius:12px;
     box-shadow:0 3px 12px #0003
   }
+  #farm-player{display:none!important}
+  #mobile-move-pad{display:none!important}
   .move-btn{min-width:38px;min-height:34px;font-size:16px;box-shadow:0 1px 4px #0003}
-  #message{font-size:10px!important;min-height:16px!important;margin:1px 0!important}
+  #message{font-size:10px!important;min-height:12px!important;margin:0!important}
   footer{display:none!important}
   .dock{
     position:fixed!important;
