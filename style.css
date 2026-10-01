@@ -1,0 +1,307 @@
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(#9bd06f,#74b957);color:#26351f}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 25px;background:#fffffff0;box-shadow:0 3px 12px #0002}.topbar h1{margin:0}.topbar p{margin:3px 0 0;color:#65735f}.stats{display:flex;gap:8px;flex-wrap:wrap}.stats span{background:#fff;padding:8px 12px;border-radius:12px}main{width:min(1220px,96%);margin:18px auto;display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px}.game-panel{background:#ffffff33;padding:12px;border-radius:18px}.zonebar,.toolbar,.quickbar{display:flex;justify-content:center;align-items:center;gap:6px;margin-bottom:9px}.zone-title,.navbtn,.tool,.quickbar button,.seed,.shop,.choice,.primary,.tab,.mini{border:0;border-radius:8px;cursor:pointer;background:#eef4e9}.zone-title{padding:8px 16px;min-width:220px;font-weight:bold;color:#31572c}.navbtn{width:34px;height:34px;font-weight:bold}.navbtn:disabled{opacity:.35;cursor:not-allowed}.tool{min-width:90px;padding:8px;font-size:21px}.tool span{display:block;font-size:11px}.tool.active,.seed.active,.choice.active,.tab.active{background:#31572c;color:#fff}.quickbar button{padding:7px 10px;font-size:12px}.farm{width:min(100%,620px);aspect-ratio:1;display:grid;grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(16,1fr);gap:3px;padding:8px;margin:auto;background:#48783d;border-radius:16px;box-shadow:0 10px 30px #0004;touch-action:none}.farm.prairie{background:#4f7d43}.tile{position:relative;overflow:hidden;border:0;border-radius:5px;background:linear-gradient(135deg,#72b84e,#5da243);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:clamp(15px,3vw,28px);user-select:none}.prairie .tile{background:linear-gradient(135deg,#80c85a,#68ae48)}.tile.plowed,.tile.planted{background:linear-gradient(135deg,#825b37,#654329)}.tile.ready{background:#80522c;box-shadow:inset 0 0 12px #ffdb50aa}.tile.locked{background:#394536;color:#ffffff44;cursor:not-allowed;font-size:12px}.tile.building{background:linear-gradient(135deg,#63824e,#48623a);box-shadow:inset 0 0 0 2px #ffffff33}.tile.water{background:linear-gradient(135deg,#55bde8,#257db6)}.crop-progress{position:absolute;left:3px;right:3px;bottom:2px;height:4px;background:#0005;border-radius:8px;overflow:hidden}.crop-progress i,.feedbar i{display:block;height:100%;background:#baff72}.message{text-align:center;min-height:22px;color:#fff;font-weight:bold;text-shadow:0 1px 3px #0007}.side-panel{display:flex;flex-direction:column;gap:7px}.card{background:#fffffff0;border-radius:12px;padding:9px 10px}.card summary{font-size:16px;font-weight:bold;cursor:pointer;list-style:none}.card summary::-webkit-details-marker{display:none}.card[open] summary{margin-bottom:7px}.seed-selector{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:5px}.seed{padding:6px}.shop,.line,.compact{width:100%;display:flex;justify-content:space-between;align-items:center;gap:6px;margin:3px 0}.shop{padding:6px}.primary{width:100%;padding:7px;margin-top:5px;background:#31572c;color:#fff;font-weight:bold}.mini{padding:5px 7px;font-size:11px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px}.tab{padding:6px}.choice{padding:6px;margin:2px;font-size:12px}.locked-choice{opacity:.42;filter:grayscale(1)}.hint{font-size:11px;color:#65735f;line-height:1.3;margin:4px 0}.badge{display:inline-block;padding:2px 5px;border-radius:7px;background:#dbead1;font-size:10px}.feedbar{height:6px;background:#d8d8d8;border-radius:5px;overflow:hidden;margin:3px 0 5px}.hungry{color:#a24c1a;font-weight:bold;font-size:11px}.good{color:#31572c;font-weight:bold;font-size:11px}.modal{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:15px;z-index:50}.modal.hidden{display:none}.map-card{width:min(720px,96vw);background:#f7fff2;border-radius:18px;padding:16px;box-shadow:0 20px 60px #0007}.map-head{display:flex;align-items:center;justify-content:space-between}.map-head h2{margin:0}.map-head button{border:0;background:#e5efdf;border-radius:8px;padding:8px 11px;cursor:pointer}.map-help{font-size:12px;color:#66745f}.map-zones{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.zone-card{border:0;border-radius:14px;padding:15px;text-align:left;cursor:pointer;background:linear-gradient(135deg,#dff5c9,#bce795);min-height:130px}.zone-card.current{outline:3px solid #31572c}.zone-card.locked-zone{background:#e1e4df;color:#747b70}.zone-card h3{margin:0 0 6px}.zone-card p{font-size:12px;margin:4px 0}.zone-card .price{display:block;margin-top:10px;font-weight:bold}footer{text-align:center;color:#fff;padding:8px;font-size:11px}@media(max-width:800px){.topbar{padding:10px;flex-direction:column;align-items:flex-start}.topbar p{display:none}main{display:block;width:100%;padding:0 6px;margin:8px 0}.game-panel{padding:6px}.toolbar{position:sticky;top:2px;z-index:5}.tool{min-width:0;flex:1;padding:6px 2px}.quickbar button{flex:1}.farm{padding:4px;gap:2px}.side-panel{margin-top:9px}.card{padding:8px}.tile.locked{font-size:9px}.map-zones{grid-template-columns:1fr}.zone-title{min-width:0;flex:1}}.tool{min-width:78px}.tile.selected{outline:3px solid #fff;box-shadow:inset 0 0 0 3px #31572c}.zone-forest{background:#315f35}.zone-forest .tile{background:linear-gradient(135deg,#79bd45,#5c9e36)}.zone-mine{background:#4d5748}.zone-mine .tile{background:linear-gradient(135deg,#76b947,#63a53b)}.tile.forest-tile{background:#537d3e}.tile.rock{background:#777}.spec-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;grid-column:1/-1}.spec-wrap>h3{grid-column:1/-1}.good{color:#31572c;font-weight:bold;font-size:11px}@media(max-width:800px){.spec-wrap{grid-template-columns:1fr}.tool{min-width:0}}
+
+
+/* V24-V26 : interface contextuelle */
+main{grid-template-columns:minmax(0,1fr) 330px}
+.side-panel{position:sticky;top:10px;align-self:start}
+.side-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:7px;background:#ffffffc9;padding:5px;border-radius:12px}
+.side-tab{border:0;border-radius:9px;padding:7px 2px;background:#edf4e8;cursor:pointer;font-size:18px;color:#31572c}
+.side-tab span{display:block;font-size:9px;margin-top:2px}
+.side-tab.active{background:#31572c;color:#fff}
+.panel-page{display:none}
+.panel-page.active{display:flex;flex-direction:column;gap:7px}
+.card h2{font-size:16px;margin:0 0 8px}
+.zone-note{padding:7px;border-radius:8px;background:#e8f4df;font-size:11px;color:#52644a;margin:5px 0}
+.upgrade-row{padding:8px;border-radius:9px;background:#eef5e9;margin:5px 0}
+.upgrade-row .compact{margin:0}
+.upgrade-effect{font-size:10px;color:#64715f;margin-top:4px}
+.progress-label{position:absolute;left:4px;right:4px;bottom:7px;font-size:9px;color:#fff;text-shadow:0 1px 2px #000;font-weight:bold}
+@media(max-width:800px){
+  main{display:flex;flex-direction:column}
+  .side-panel{position:static;order:2}
+  .side-tabs{position:sticky;bottom:4px;z-index:15;box-shadow:0 4px 18px #0004}
+  .panel-page{margin-bottom:4px}
+  .game-panel{order:1}
+}
+
+/* ==========================================================
+   V27-V29 — Terrain prioritaire / menus de jeu en surimpression
+   ========================================================== */
+html,body{min-height:100%;overflow-x:hidden}
+.game-shell{display:block!important;max-width:1120px;margin:0 auto;padding:16px 16px 90px!important}
+.game-panel{max-width:900px;margin:0 auto}
+.side-panel,.side-tabs,.panel-page{display:none!important}
+.dock{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:40;display:flex;gap:6px;padding:7px;background:#ffffffea;border-radius:18px;box-shadow:0 5px 20px #18350b55;backdrop-filter:blur(8px)}
+.dock button{min-width:74px;border:0;background:#eef6e8;border-radius:12px;padding:8px 7px;cursor:pointer;color:#31572c;font-size:21px}
+.dock button span{display:block;font-size:10px;margin-top:2px;font-weight:700}
+.dock button:hover,.dock button.active{background:#31572c;color:#fff}
+
+.overlay{position:fixed;inset:0;z-index:100;background:#10200eb8;display:flex;align-items:center;justify-content:center;padding:18px}
+.overlay.hidden{display:none}
+.window{width:min(920px,94vw);max-height:min(720px,88vh);display:flex;flex-direction:column;background:#f8f3df;border:4px solid #d6a763;border-radius:24px;box-shadow:0 15px 50px #0008;overflow:hidden}
+.window-head{display:grid;grid-template-columns:50px 1fr 50px;align-items:center;padding:10px 14px;border-bottom:2px solid #dfbf8b;background:#fff1c9}
+.window-head h2{text-align:center;margin:0;color:#74451f;font-size:28px}
+.window-head button{border:0;background:transparent;font-size:28px;cursor:pointer;color:#a35332}
+.window-body{padding:14px;overflow:auto;overscroll-behavior:contain}
+.window-body>section{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.menu-card{background:#fff8df;border:2px solid #e3c48c;border-radius:15px;padding:12px}
+.menu-card h3{margin:0 0 10px;color:#6c4729}
+#building-shop{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+#building-shop .choice{min-height:82px}
+#stock{font-size:16px}
+#upgrades .upgrade-row{background:#f3e8c8}
+#panel-sources{display:none!important}
+body.modal-open{overflow:hidden}
+
+@media(max-width:600px){
+  .topbar{padding:6px 9px!important;min-height:auto!important}
+  .brand h1{font-size:18px!important;margin:0}
+  .brand p{display:none}
+  .stats{gap:4px!important}
+  .stats span{font-size:11px!important;padding:5px!important}
+  .game-shell{padding:6px 4px 76px!important}
+  .game-panel{padding:6px!important}
+  .zonebar{margin-bottom:5px!important}
+  .toolbar{gap:3px!important}
+  .toolbar button{padding:7px 5px!important;font-size:10px!important}
+  .farm{width:min(96vw,520px)!important}
+  .dock{bottom:5px;width:calc(100% - 10px);justify-content:space-around;gap:2px;padding:4px;border-radius:13px}
+  .dock button{min-width:0;flex:1;padding:6px 2px;font-size:18px}
+  .dock button span{font-size:8px}
+  .overlay{padding:6px;align-items:center}
+  .window{width:98vw;max-height:86dvh;border-width:3px;border-radius:17px}
+  .window-head{grid-template-columns:38px 1fr 38px;padding:6px}
+  .window-head h2{font-size:21px}
+  .window-head button{font-size:22px}
+  .window-body{padding:8px}
+  .window-body>section{grid-template-columns:1fr;gap:7px}
+  .menu-card{padding:8px}
+}
+@media(max-height:480px) and (orientation:landscape){
+  .topbar{padding:3px 10px!important}
+  .brand p{display:none}
+  .game-shell{padding:4px 90px 4px 4px!important}
+  .dock{left:auto;right:5px;top:50%;bottom:auto;transform:translateY(-50%);width:76px;flex-direction:column}
+  .dock button{min-width:0;padding:4px 2px;font-size:17px}
+  .window{max-height:94dvh}
+}
+
+/* V30-V35 — inventaire, commandes, fenêtres uniques */
+.capacity-line{display:flex;justify-content:space-between;align-items:center;padding:8px 9px;background:#f0e7c8;border-radius:10px;margin-bottom:8px}.stock-group{margin:7px 0}.stock-group h4{margin:4px 0;padding:4px 7px;background:#efe2bb;border-radius:7px;color:#74451f}.stock-row,.order-row{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:7px;border-bottom:1px solid #eadbb4}.stock-name small,.order-row small{display:block;font-size:10px;color:#766b57;margin-top:2px}.stock-actions{display:flex;gap:4px}.stock-actions button,.order-row button{border:0;border-radius:8px;padding:6px 9px;background:#31572c;color:white;font-weight:700;cursor:pointer}.stock-actions button:disabled,.order-row button:disabled{opacity:.35;cursor:not-allowed}.order-row button{min-width:88px}.danger-soft{background:#765a2f!important}.map-card{max-height:88dvh;display:flex;flex-direction:column}.map-zones{overflow:auto;overscroll-behavior:contain;padding:3px}.map-head{flex:0 0 auto;position:sticky;top:0;background:#f7fff2;z-index:2}.map-help{flex:0 0 auto}
+@media(max-width:600px){.map-card{width:96vw;max-height:88dvh;padding:10px}.map-zones{grid-template-columns:1fr;gap:7px}.zone-card{min-height:92px;padding:11px}.stock-row{padding:6px 3px}.window-body{overscroll-behavior:contain}}
+
+/* V36 — notifications et lisibilité des ventes */
+.game-toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-18px);z-index:9999;max-width:min(92vw,520px);padding:10px 14px;border-radius:12px;background:#6f3d20;color:#fff;font-weight:800;box-shadow:0 6px 22px #0005;opacity:0;pointer-events:none;transition:.18s ease;text-align:center}.game-toast.ok{background:#31572c}.game-toast.show{opacity:1;transform:translate(-50%,0)}
+.stock-actions button{white-space:nowrap;font-size:11px;padding:6px 7px}.mine-supplies{display:grid;gap:6px}.mine-supplies .shop{width:100%}
+@media(max-width:390px){.stock-row{align-items:flex-start}.stock-actions{flex-direction:column}.stock-actions button{font-size:10px;padding:5px 6px}.game-toast{top:8px;font-size:12px}}
+
+.ready-label{position:absolute;left:3px;right:3px;bottom:3px;background:#31572ddd;color:#fff;border-radius:5px;font-size:8px;font-weight:900;line-height:13px;text-align:center}
+
+.shop-line,.mission-row{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:7px;border-bottom:1px solid rgba(60,90,35,.14)}.shop-line span,.mission-row span{display:flex;flex-direction:column}.shop-line span:last-child{flex-direction:row;gap:4px}.shop-line button,.recipe-list button,.mission-row button{background:#2f6425;color:#fff;border:0;border-radius:8px;padding:6px 8px}.recipe-list{display:grid;gap:6px;margin-top:8px}.mastery-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}.mastery-grid div{background:#eef7e7;border-radius:8px;padding:6px;display:flex;flex-direction:column}.mastery-grid small,.mission-row small,.shop-line small{opacity:.72;margin-top:2px}@media(max-width:480px){.shop-line{align-items:flex-start}.shop-line button{font-size:11px;padding:5px}.mastery-grid{grid-template-columns:1fr 1fr}}
+
+/* V44 : quatre entrées principales, la carte est accessible par le nom de la parcelle. */
+.dock{grid-template-columns:repeat(4,1fr)!important}
+
+/* V47 — branchement des assets graphiques, sans changement d'économie ni de sauvegarde */
+.tile{background-image:url('assets/terrain/grass/grass_natural.png');background-size:cover;background-position:center}
+.prairie .tile{background-image:url('assets/terrain/grass/grass_flowers_small.png')}
+.zone-forest .tile{background-image:url('assets/terrain/grass/grass_leaves.png')}
+.zone-mine .tile{background-image:url('assets/terrain/soil/soil_rocky.png')}
+.tile.plowed{background-image:url('assets/terrain/soil/soil_plowed.png')}
+.tile.ready{background-image:url('assets/terrain/soil/soil_planted.png')}
+.tile.water{background-image:url('assets/terrain/water/water_pond.png')}
+.tile.locked{background-image:none}
+.tile-art{width:94%;height:94%;object-fit:contain;pointer-events:none;user-select:none;filter:drop-shadow(0 2px 2px #0003)}
+.tile.building .tile-art{width:100%;height:100%}
+.farm{position:relative}
+.farm-player{position:absolute;z-index:20;pointer-events:none;user-select:none;width:6.25%;height:6.25%;object-fit:contain;left:calc(var(--px) * 6.25%);top:calc(var(--py) * 6.25%);transform:scale(1.28) translateY(-8%);transform-origin:center bottom;filter:drop-shadow(0 3px 2px #0005);transition:left .08s linear,top .08s linear}
+
+/* V48 — passe visuelle : terrain continu, assets intégrés sans effet damier */
+.farm{
+  gap:0;
+  padding:7px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 22% 18%,rgba(255,255,255,.06),transparent 28%),
+    linear-gradient(145deg,#477f36,#356a2f);
+}
+.farm.prairie,.farm.zone-farm{
+  background:
+    radial-gradient(circle at 18% 24%,rgba(211,244,133,.14),transparent 30%),
+    radial-gradient(circle at 78% 72%,rgba(255,255,255,.06),transparent 26%),
+    linear-gradient(145deg,#5d963f,#477f35);
+}
+.farm.zone-forest{
+  background:
+    radial-gradient(circle at 20% 20%,rgba(156,204,91,.09),transparent 30%),
+    linear-gradient(145deg,#356c34,#28582e);
+}
+.farm.zone-mine{
+  background:
+    radial-gradient(circle at 70% 20%,rgba(255,255,255,.035),transparent 30%),
+    linear-gradient(145deg,#555c4e,#444c41);
+}
+.tile,.prairie .tile,.zone-forest .tile,.zone-mine .tile{
+  background:transparent;
+  background-image:none;
+  border-radius:0;
+  box-shadow:none;
+}
+.tile:hover{background:rgba(255,255,255,.045)}
+.tile.plowed,.tile.planted,.tile.ready{
+  background-color:transparent;
+  background-image:url('assets/terrain/soil/soil_plowed.png');
+  background-size:112% 112%;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+.tile.ready{background-image:url('assets/terrain/soil/soil_planted.png');box-shadow:none}
+.tile.water{background:transparent url('assets/terrain/water/water_pond.png') center/112% 112% no-repeat}
+.tile.building{background:rgba(255,255,255,.055);border-radius:7px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.tile.forest-tile,.tile.rock{background:transparent}
+.tile.locked{background:rgba(30,40,28,.28);border-radius:2px}
+.tile-art{width:104%;height:104%;object-fit:contain;filter:drop-shadow(0 3px 2px #0003);transform:translateY(-2%)}
+.tile.building .tile-art{width:112%;height:112%;transform:translateY(-5%)}
+.farm-player{transform:scale(1.48) translateY(-12%);filter:drop-shadow(0 4px 3px #0006)}
+@media(max-width:800px){
+  .farm{padding:5px;gap:0}
+  .tile-art{width:108%;height:108%}
+  .farm-player{transform:scale(1.58) translateY(-12%)}
+}
+
+
+/* V49 — grande carte 16x16 centrée et première échelle d'aménagement */
+.farm{grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(16,1fr)}
+.tile.locked{background:rgba(25,35,23,.30);box-shadow:inset 0 0 0 1px rgba(255,255,255,.025)}
+.tile.building{overflow:visible;z-index:4;background:transparent;box-shadow:none}
+.tile.building .tile-art{width:185%;height:185%;max-width:none;max-height:none;transform:translateY(-22%);filter:drop-shadow(0 5px 4px #0005)}
+.tile.building:hover{z-index:8}
+.farm-player{width:6.25%;height:6.25%;left:calc(var(--px) * 6.25%);top:calc(var(--py) * 6.25%);transform:scale(1.72) translateY(-14%)}
+@media(max-width:800px){.tile.building .tile-art{width:190%;height:190%;transform:translateY(-22%)}.farm-player{transform:scale(1.82) translateY(-14%)}}
+
+/* V50 — bâtiments réellement dimensionnés sur 2×2 cases */
+.tile.building{overflow:visible;z-index:6}
+.tile.building .tile-art{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:calc(var(--fw,2) * 100%);
+  height:calc(var(--fh,2) * 100%);
+  max-width:none;
+  max-height:none;
+  object-fit:contain;
+  object-position:center bottom;
+  transform:none;
+  z-index:7;
+  pointer-events:none;
+  filter:drop-shadow(0 5px 4px #0005);
+}
+.tile.building-footprint{background:rgba(255,255,255,.025);cursor:not-allowed}
+.tile.building-footprint:hover{background:rgba(255,255,255,.04)}
+@media(max-width:800px){
+ .tile.building .tile-art{width:calc(var(--fw,2) * 100%);height:calc(var(--fh,2) * 100%);transform:none}
+}
+.build-tabs{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.future-tab{opacity:.48;cursor:not-allowed;font-size:10px;padding:6px 2px}
+@media(max-width:600px){.build-tabs{grid-template-columns:repeat(2,1fr)!important}.future-tab{font-size:10px}}
+
+/* V50.3 — paysage mobile : scène complète sans dock superposé */
+@media (orientation:landscape) and (max-height:520px) and (hover:none),
+       (orientation:landscape) and (max-height:520px) and (pointer:coarse){
+  html,body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto}
+  body{padding-bottom:58px}
+  .topbar{padding:3px 10px!important;min-height:44px!important}
+  .brand h1{font-size:18px!important;line-height:1.05}
+  .brand p{display:none!important}
+  .stats{gap:4px!important}.stats span{font-size:10px!important;padding:4px 6px!important}
+  .game-shell{max-width:760px!important;margin:0 auto!important;padding:4px 6px 64px!important}
+  .game-panel{max-width:760px!important;padding:5px!important}
+  .zonebar{margin:0 auto 4px!important;max-width:240px!important;padding:4px 8px!important}
+  .toolbar{gap:3px!important;margin-bottom:4px!important}
+  .toolbar button{padding:5px 4px!important;font-size:9px!important;min-height:34px!important}
+  .quickbar{gap:3px!important;margin-bottom:3px!important}
+  .quickbar button{padding:3px 5px!important;font-size:9px!important}
+  .farm{
+    width:min(76vh,430px)!important;
+    height:min(76vh,430px)!important;
+    max-width:430px!important;
+    max-height:430px!important;
+    margin:0 auto!important;
+    padding:4px!important;
+  }
+  #message{font-size:11px!important;min-height:18px!important;margin:3px 0!important}
+  footer{font-size:8px!important;margin:4px 0 0!important}
+  .dock{
+    position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:4px!important;
+    transform:translateX(-50%)!important;width:min(360px,72vw)!important;height:auto!important;
+    flex-direction:row!important;justify-content:space-around!important;gap:2px!important;padding:3px!important;
+    border-radius:12px!important;z-index:80!important
+  }
+  .dock button{min-width:0!important;flex:1!important;padding:4px 2px!important;font-size:15px!important}
+  .dock button span{font-size:7px!important;margin-top:0!important}
+  .window{max-height:92dvh!important}
+}
+
+/* V50.4 — paysage mobile : dock sous la carte, jamais en superposition */
+@media (orientation:landscape) and (max-height:520px) and (hover:none),
+       (orientation:landscape) and (max-height:520px) and (pointer:coarse){
+  html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+  body{padding-bottom:0!important}
+  .game-shell{padding:4px 6px!important;max-width:760px!important;margin:0 auto!important}
+  .game-panel{padding:5px!important}
+  .farm{
+    width:min(68dvh,430px)!important;
+    height:min(68dvh,430px)!important;
+    min-width:210px!important;
+    min-height:210px!important;
+    margin:0 auto!important;
+  }
+  .dock{
+    position:static!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+    transform:none!important;
+    width:min(360px,72vw)!important;
+    margin:6px auto 2px!important;
+    display:flex!important;
+    flex-direction:row!important;
+    justify-content:space-around!important;
+    gap:2px!important;
+    padding:3px!important;
+    border-radius:12px!important;
+    z-index:1!important;
+  }
+  .dock button{min-width:0!important;flex:1!important;padding:4px 2px!important;font-size:15px!important}
+  .dock button span{font-size:7px!important;margin-top:0!important}
+  footer{margin:2px 0 0!important;padding:3px!important}
+}
+@media (orientation:landscape) and (max-height:380px) and (hover:none),
+       (orientation:landscape) and (max-height:380px) and (pointer:coarse){
+  .farm{width:min(60dvh,390px)!important;height:min(60dvh,390px)!important;min-width:190px!important;min-height:190px!important}
+}
+
+/* V51 — catalogue Aménager */
+.decor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:5px 0 12px}.decor-choice{display:flex;align-items:center;gap:7px;min-height:70px;padding:6px;text-align:left}.decor-choice img{width:48px;height:48px;object-fit:contain}.decor-choice span{display:flex;flex-direction:column;min-width:0}.decor-choice small{font-size:10px;color:#65735f}.arrange-actions{margin-bottom:8px}.arrange-actions .choice{width:100%;min-height:54px}.tile.decorated{overflow:visible}.tile.decorated .tile-art{width:118%;height:118%;object-fit:contain;transform:translateY(-7%)}@media(max-width:600px){.decor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.decor-choice{min-height:62px}.decor-choice img{width:40px;height:40px}}
+
+/* V51.1 — catalogue complet, animaux, rotation/suppression, assets agrandis */
+.arrange-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.arrange-tools .choice{min-height:58px}.decor-choice img{width:60px;height:60px}.decor-choice{min-height:80px}.tile.decorated .tile-art{width:145%;height:145%;object-fit:contain;transform:translateY(-10%) rotate(var(--rot,0deg));transform-origin:center center}.tile.decorated{z-index:3}.tile.decorated:hover{z-index:6}@media(max-width:600px){.arrange-tools{grid-template-columns:1fr}.decor-choice img{width:48px;height:48px}.decor-choice{min-height:68px}.tile.decorated .tile-art{width:135%;height:135%}}
+
+/* PACK V51.2 — réseaux automatiques + UI */
+.produce-balance{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e8f4dc;border:1px solid #c8dda9;border-radius:10px;padding:8px 10px;margin:0 0 8px;font-size:13px}.produce-balance b{color:#31572c;font-size:15px}
+.game-confirm{position:fixed;inset:0;z-index:10000;background:#0008;display:flex;align-items:center;justify-content:center;padding:16px}.game-confirm-card{width:min(92vw,390px);background:#fffbe0;border:3px solid #d0ae53;border-radius:16px;padding:18px;box-shadow:0 15px 45px #0007;text-align:center;color:#5a3b17}.game-confirm-card>div{display:flex;gap:10px;justify-content:center;margin-top:16px}.game-confirm-card button{border:0;border-radius:9px;padding:9px 16px;cursor:pointer;background:#e8eadf}.game-confirm-card .confirm-yes{background:#31572c;color:white;font-weight:bold}
+
+.reset-game-box{margin-top:16px;padding-top:12px;border-top:1px solid #dfcf9f}.reset-game-box h4{margin:0 0 4px}.reset-game-btn{width:100%;border:0;border-radius:10px;padding:10px 12px;background:#8a3b2f;color:#fff;font-weight:800;cursor:pointer}.reset-game-btn:hover{filter:brightness(.95)}
+
+
+/* V52.2 — commandes tactiles du personnage */
+.mobile-move-pad{display:none}
+@media (hover:none),(pointer:coarse),(max-width:800px){
+  .mobile-move-pad{
+    display:grid;grid-template-columns:44px 44px 44px;grid-template-rows:40px 40px;
+    grid-template-areas:". up ." "left down right";justify-content:center;gap:5px;
+    margin:7px auto 3px;touch-action:none;user-select:none;-webkit-user-select:none
+  }
+  .move-btn{border:0;border-radius:11px;background:#31572c;color:#fff;font-size:19px;font-weight:900;
+    box-shadow:0 2px 6px #0004;touch-action:none;min-width:44px;min-height:40px;padding:0}
+  .move-btn:active,.move-btn.is-held{transform:translateY(1px);background:#24451f}
+  .move-up{grid-area:up}.move-left{grid-area:left}.move-down{grid-area:down}.move-right{grid-area:right}
+}
