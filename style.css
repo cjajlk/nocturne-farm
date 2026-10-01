@@ -54,12 +54,30 @@ html,body{min-height:100%;overflow-x:hidden}
 body.modal-open{overflow:hidden}
 
 @media(max-width:600px){
-  .topbar{padding:6px 9px!important;min-height:auto!important}
-  .brand h1{font-size:18px!important;margin:0}
+  .topbar{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"brand fs" "stats stats";
+    align-items:center!important;
+    gap:4px 6px!important;
+    padding:4px 8px!important;
+    min-height:auto!important
+  }
+  .brand{grid-area:brand;min-width:0}
+  .brand h1{font-size:15px!important;line-height:1.05!important;margin:0}
   .brand p{display:none}
-  .stats{gap:4px!important}
-  .stats span{font-size:11px!important;padding:5px!important}
-  .fullscreen-toggle{align-self:flex-end;margin-top:3px;padding:6px 8px;font-size:11px}
+  .stats{grid-area:stats;gap:3px!important;justify-content:flex-start;flex-wrap:nowrap}
+  .stats span{font-size:10px!important;padding:3px 6px!important;border-radius:9px}
+  .fullscreen-toggle{
+    grid-area:fs;
+    align-self:center!important;
+    margin:0!important;
+    padding:4px 7px!important;
+    font-size:9px!important;
+    line-height:1!important;
+    border-radius:8px!important;
+    white-space:nowrap
+  }
   .game-shell{padding:6px 4px 76px!important}
   .game-panel{padding:6px!important}
   .zonebar{margin-bottom:5px!important}
@@ -301,16 +319,12 @@ body.modal-open{overflow:hidden}
 
 
 /* V52.2 — commandes tactiles du personnage */
-.mobile-move-pad{display:none}
+.mobile-move-pad{display:none!important}
 /* Masquage temporaire du personnage et du pad : code conservé, affichage coupé seulement. */
 #farm-player{display:none!important}
 #mobile-move-pad{display:none!important}
 @media (hover:none),(pointer:coarse),(max-width:800px){
-  .mobile-move-pad{
-    display:grid;grid-template-columns:44px 44px 44px;grid-template-rows:40px 40px;
-    grid-template-areas:". up ." "left down right";justify-content:center;gap:5px;
-    margin:7px auto 3px;touch-action:none;user-select:none;-webkit-user-select:none
-  }
+  .mobile-move-pad{display:none!important}
   .move-btn{border:0;border-radius:11px;background:#31572c;color:#fff;font-size:19px;font-weight:900;
     box-shadow:0 2px 6px #0004;touch-action:none;min-width:44px;min-height:40px;padding:0}
   .move-btn:active,.move-btn.is-held{transform:translateY(1px);background:#24451f}
@@ -345,22 +359,7 @@ body.modal-open{overflow:hidden}
     padding:2px 6px 0!important;
     gap:2px!important;
     display:flex!important;
-    flex-direction:column!important
-  }
-  .game-panel{
-    flex:1 1 auto!important;
-    min-height:0!important;
-    max-width:none!important;
-    padding:2px!important;
-    display:flex!important;
-    flex-direction:column!important;
-    gap:1px!important
-  }
-  .zonebar{margin:0 auto 1px!important;max-width:220px!important;padding:2px 6px!important}
-  .zone-title{padding:4px 8px!important;min-height:28px!important;font-size:12px!important}
-  .toolbar{gap:2px!important;margin-bottom:1px!important;flex:0 0 auto!important}
-  .tool{padding:4px 2px!important;font-size:8px!important;min-width:0!important;min-height:28px!important}
-  .tool span{font-size:8px!important;line-height:1!important}
+  #mobile-move-pad{display:none!important}
   .quickbar{gap:2px!important;margin-bottom:1px!important;flex:0 0 auto!important}
   .quickbar button{padding:3px 4px!important;font-size:8px!important}
   .farm{

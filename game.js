@@ -290,7 +290,7 @@ function closeGameModal(){
 function updateFullscreenButton(){
   if(!fullscreenToggle)return;
   const active=!!document.fullscreenElement;
-  fullscreenToggle.textContent=active?"🗗 Quitter plein écran":"⛶ Plein écran";
+  fullscreenToggle.textContent=active?"⛶ Quitter plein écran":"⛶ Plein écran";
   fullscreenToggle.setAttribute("aria-pressed",active?"true":"false");
 }
 async function toggleFullscreen(){
