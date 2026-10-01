@@ -260,6 +260,7 @@ function renderAll(){production();renderFarm();renderPlayer();renderUI()}
 let activePanel=null;
 const modal=document.getElementById("game-modal"), modalBody=document.getElementById("modal-body"), modalTitle=document.getElementById("modal-title");
 const panelSources=document.getElementById("panel-sources");
+const fullscreenToggle=document.getElementById("fullscreen-toggle");
 const modalTitles={produce:"🌱 Produire",build:"🔨 Construire",stock:"📦 Stock",manage:"⚙️ Gestion de la parcelle",domain:"🗺️ Domaine",arrange:"✋ Aménager"};
 function restoreModalSource(){
   const sec=modalBody.querySelector("section[data-source]");
@@ -286,6 +287,21 @@ function closeGameModal(){
   modal.classList.add("hidden");document.body.classList.remove("modal-open");activePanel=null;
   document.querySelectorAll(".dock [data-open]").forEach(b=>b.classList.remove("active"));
 }
+function updateFullscreenButton(){
+  if(!fullscreenToggle)return;
+  const active=!!document.fullscreenElement;
+  fullscreenToggle.textContent=active?"🗗 Quitter plein écran":"⛶ Plein écran";
+  fullscreenToggle.setAttribute("aria-pressed",active?"true":"false");
+}
+async function toggleFullscreen(){
+  try{
+    if(document.fullscreenElement){
+      if(document.exitFullscreen)await document.exitFullscreen();
+      return;
+    }
+    if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();
+  }catch(e){}
+}
 document.querySelectorAll(".dock [data-open]").forEach(b=>b.onclick=()=>activatePanel(b.dataset.open));
 function bindResetGame(){
   const btn=document.getElementById("reset-game");
@@ -302,6 +318,11 @@ function bindResetGame(){
 }
 document.getElementById("modal-close").onclick=closeGameModal;
 modal.onclick=e=>{if(e.target===modal)closeGameModal()};
+if(fullscreenToggle){
+  fullscreenToggle.onclick=toggleFullscreen;
+  updateFullscreenButton();
+  document.addEventListener("fullscreenchange",updateFullscreenButton);
+}
 // Personnage visuel V47 : utilise les 28 PNG fournis, sans modifier les mécaniques de ferme.
 const PLAYER_FRAMES={front:6,back:6,left:6,right:6};
 let playerVisual={x:0,y:0,dir:"front",frame:0,timer:null};

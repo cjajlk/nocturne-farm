@@ -59,6 +59,7 @@ body.modal-open{overflow:hidden}
   .brand p{display:none}
   .stats{gap:4px!important}
   .stats span{font-size:11px!important;padding:5px!important}
+  .fullscreen-toggle{align-self:flex-end;margin-top:3px;padding:6px 8px;font-size:11px}
   .game-shell{padding:6px 4px 76px!important}
   .game-panel{padding:6px!important}
   .zonebar{margin-bottom:5px!important}
@@ -209,6 +210,7 @@ body.modal-open{overflow:hidden}
 @media (orientation:landscape) and (max-height:520px) and (hover:none),
        (orientation:landscape) and (max-height:520px) and (pointer:coarse){
   html,body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto}
+  body{min-height:100dvh}
   body{padding-bottom:58px}
   .topbar{padding:3px 10px!important;min-height:44px!important}
   .brand h1{font-size:18px!important;line-height:1.05}
@@ -246,6 +248,7 @@ body.modal-open{overflow:hidden}
 @media (orientation:landscape) and (max-height:520px) and (hover:none),
        (orientation:landscape) and (max-height:520px) and (pointer:coarse){
   html,body{height:auto!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important}
+  body{min-height:100dvh!important}
   body{padding-bottom:0!important}
   .game-shell{padding:4px 6px!important;max-width:760px!important;margin:0 auto!important}
   .game-panel{padding:5px!important}
@@ -305,3 +308,6 @@ body.modal-open{overflow:hidden}
   .move-btn:active,.move-btn.is-held{transform:translateY(1px);background:#24451f}
   .move-up{grid-area:up}.move-left{grid-area:left}.move-down{grid-area:down}.move-right{grid-area:right}
 }
+
+.fullscreen-toggle{padding:7px 10px;border:0;border-radius:10px;background:#eef4e9;cursor:pointer;color:#31572c;font-weight:700;align-self:flex-start}
+.fullscreen-toggle:active{transform:translateY(1px)}
