@@ -638,6 +638,7 @@ body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!impo
 .farm.illustrated-prairie{background:#48783d url('assets/backgrounds/prairie-zone-01.png') center/100% 100% no-repeat!important}
 .farm.illustrated-forest{background:#28582e url('assets/backgrounds/fond_bois.png') center/100% 100% no-repeat!important}
 .farm.illustrated-mine{background:#444c41 url('assets/backgrounds/fond_mine.png') center/100% 100% no-repeat!important}
+.farm.illustrated-livestock{background:#365f35 url('assets/backgrounds/livestock-zone-01.png') center/100% 100% no-repeat!important}
 .illustrated-field-grid{
   position:absolute;left:22%;top:20%;width:50.42%;height:64%;
   display:grid;grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(16,1fr);z-index:2;
@@ -850,3 +851,56 @@ body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!impo
   }
 }
 :fullscreen main.game-shell{margin-left:auto!important;margin-right:auto!important}
+
+/* V59.14 — animaux réels visibles dans la Zone d’élevage */
+.livestock-animal-layer{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.livestock-animal{position:absolute;display:block;object-fit:contain;transform:translate(-50%,-50%);filter:drop-shadow(0 4px 3px rgba(0,0,0,.35));user-select:none;-webkit-user-drag:none}
+.livestock-chicken{width:5.2%;min-width:26px;max-width:58px}
+.livestock-cow{width:8.5%;min-width:42px;max-width:96px}
+@media (max-width:1000px){.livestock-chicken{width:6%}.livestock-cow{width:9.5%}}
+
+/* V59.14 test — déplacement des animaux en mode Édition */
+.livestock-animal-layer.editing{pointer-events:none}
+.livestock-animal-layer.editing .livestock-animal{pointer-events:auto;touch-action:none;cursor:grab;outline:2px dashed rgba(255,255,255,.8);border-radius:8px}
+.livestock-animal-layer.editing .livestock-animal:active{cursor:grabbing}
+
+
+/* V59.14 - actions de zone repliables, cohérentes sur Prairie / Bois / Mine */
+.zone-actions-close,
+.zone-actions-toggle{
+  border:0;
+  border-radius:10px;
+  min-height:44px;
+  padding:8px 12px;
+  cursor:pointer;
+  font:inherit;
+}
+.zone-actions-close{
+  background:#f4f8ee;
+  color:#29421f;
+  font-weight:700;
+}
+.zone-actions-toggle{
+  background:#f4f8ee;
+  color:#29421f;
+  font-weight:700;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+
+/* V59.15 — taille individuelle des animaux en Mode Édition */
+.livestock-animal{scale:var(--animal-scale,1);transform-origin:center center;}
+
+/* Release candidate — vignettes visuelles de la carte du domaine */
+.domain-zone-card{
+  position:relative;
+  overflow:hidden;
+  background-image:linear-gradient(rgba(245,255,235,.72),rgba(245,255,235,.82)),var(--zone-bg)!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+.domain-zone-card:hover{background-image:linear-gradient(rgba(245,255,235,.58),rgba(245,255,235,.72)),var(--zone-bg)!important;}
+.domain-zone-card.locked,
+.domain-zone-card[disabled]{
+  background-image:linear-gradient(rgba(225,229,222,.82),rgba(225,229,222,.9)),var(--zone-bg)!important;
+  filter:saturate(.55);
+}

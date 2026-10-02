@@ -1,25 +1,25 @@
 const FARM_SIZE=16,SAVE_KEY="cjajlkFarmV1",BACKUP_KEY="cjajlkFarmV1_backup",FEED_MS=10*60*1000;
 let RESETTING_GAME=false;
 const CROPS={wheat:{name:"Blé",ready:"🌾",price:15,sell:28,time:2*60*1000,level:1},carrot:{name:"Carotte",ready:"🥕",price:35,sell:68,time:5*60*1000,level:3},corn:{name:"Maïs",ready:"🌽",price:70,sell:140,time:10*60*1000,level:6}};
-const BUILDINGS={barn:{name:"Grange",emoji:"🏚️",price:450,level:2,kind:"buildings",production:true,img:"assets/buildings/barn/barn_lv1.png"},coop:{name:"Poulailler",emoji:"🐔",price:1000,level:5,kind:"buildings"},stable:{name:"Étable",emoji:"🐄",price:3000,level:10,kind:"buildings"},pond:{name:"Étang",emoji:"💧",price:5000,level:15,kind:"water"},
- mill:{name:"Moulin",emoji:"⚙️",price:1600,level:9,kind:"production",production:true,img:"assets/buildings/production/moulin.png"},
- sawmill:{name:"Scierie",emoji:"🪚",price:1400,level:4,kind:"production",production:true,img:"assets/buildings/production/scierie.png"},
- miner:{name:"Mine / atelier minier",emoji:"⛏️",price:2500,level:8,kind:"production",production:true,img:"assets/buildings/production/mine.png"},
- laiterie:{name:"Laiterie",emoji:"🥛",price:1800,level:10,kind:"production",production:true,img:"assets/buildings/production/laiterie.png"},
- huilerie:{name:"Huilerie",emoji:"🌻",price:1900,level:11,kind:"production",production:true,img:"assets/buildings/production/huilerie.png"},
- boulangerie:{name:"Boulangerie",emoji:"🥖",price:2100,level:12,kind:"production",production:true,img:"assets/buildings/production/boulangerie.png"},
- distillerie:{name:"Distillerie",emoji:"🧪",price:2600,level:14,kind:"production",production:true,img:"assets/buildings/production/distillerie.png"},
- carriere:{name:"Carrière",emoji:"🪨",price:2300,level:8,kind:"production",production:true,img:"assets/buildings/production/carriere.png"},
- fromagerie:{name:"Fromagerie",emoji:"🧀",price:2400,level:13,kind:"production",production:true,img:"assets/buildings/production/fromagerie.png"},
- sucrerie:{name:"Sucrerie",emoji:"🍬",price:2800,level:15,kind:"production",production:true,img:"assets/buildings/production/sucrerie.png"},
- atelierTextile:{name:"Atelier textile",emoji:"🧵",price:3000,level:16,kind:"production",production:true,img:"assets/buildings/production/atelier-textile.png"},
- atelierArtisan:{name:"Atelier artisanal",emoji:"🧰",price:3200,level:17,kind:"production",production:true,img:"assets/buildings/production/atelier-artisan.png"},
- forge:{name:"Forge",emoji:"🔥",price:3500,level:18,kind:"production",production:true,img:"assets/buildings/production/forge.png"},
- miellerie:{name:"Miellerie",emoji:"🍯",price:2200,level:12,kind:"production",production:true,img:"assets/buildings/production/miellerie.png"},
- serre:{name:"Serre",emoji:"🌿",price:3300,level:18,kind:"production",production:true,img:"assets/buildings/production/serre.png"},
- pepiniere:{name:"Pépinière",emoji:"🌱",price:2500,level:13,kind:"production",production:true,img:"assets/buildings/production/pepiniere.png"},
- atelierMenuiserie:{name:"Atelier de menuiserie",emoji:"🪚",price:3100,level:16,kind:"production",production:true,img:"assets/buildings/production/atelier-menuiserie.png"},
- charbonniere:{name:"Charbonnière",emoji:"🪵",price:2700,level:14,kind:"production",production:true,img:"assets/buildings/production/charbonniere.png"}};
+const BUILDINGS={barn:{name:"Grange",emoji:"🏚️",price:450,level:1,kind:"buildings",production:true,img:"assets/buildings/barn/barn_lv1.png"},coop:{name:"Poulailler",emoji:"🐔",price:500,level:3,kind:"buildings"},stable:{name:"Étable",emoji:"🐄",price:0,level:1,kind:"buildings"},pond:{name:"Étang",emoji:"💧",price:0,level:1,kind:"water"},
+ mill:{name:"Moulin",emoji:"⚙️",price:1600,level:1,kind:"production",production:true,img:"assets/buildings/production/moulin.png"},
+ sawmill:{name:"Scierie",emoji:"🪚",price:1400,level:1,kind:"production",production:true,img:"assets/buildings/production/scierie.png"},
+ miner:{name:"Mine / atelier minier",emoji:"⛏️",price:2500,level:1,kind:"production",production:true,img:"assets/buildings/production/mine.png"},
+ laiterie:{name:"Laiterie",emoji:"🥛",price:1800,level:1,kind:"production",production:true,img:"assets/buildings/production/laiterie.png"},
+ huilerie:{name:"Huilerie",emoji:"🌻",price:1900,level:1,kind:"production",production:true,img:"assets/buildings/production/huilerie.png"},
+ boulangerie:{name:"Boulangerie",emoji:"🥖",price:2100,level:1,kind:"production",production:true,img:"assets/buildings/production/boulangerie.png"},
+ distillerie:{name:"Distillerie",emoji:"🧪",price:2600,level:1,kind:"production",production:true,img:"assets/buildings/production/distillerie.png"},
+ carriere:{name:"Carrière",emoji:"🪨",price:2300,level:1,kind:"production",production:true,img:"assets/buildings/production/carriere.png"},
+ fromagerie:{name:"Fromagerie",emoji:"🧀",price:2400,level:1,kind:"production",production:true,img:"assets/buildings/production/fromagerie.png"},
+ sucrerie:{name:"Sucrerie",emoji:"🍬",price:2800,level:1,kind:"production",production:true,img:"assets/buildings/production/sucrerie.png"},
+ atelierTextile:{name:"Atelier textile",emoji:"🧵",price:3000,level:1,kind:"production",production:true,img:"assets/buildings/production/atelier-textile.png"},
+ atelierArtisan:{name:"Atelier artisanal",emoji:"🧰",price:3200,level:1,kind:"production",production:true,img:"assets/buildings/production/atelier-artisan.png"},
+ forge:{name:"Forge",emoji:"🔥",price:3500,level:1,kind:"production",production:true,img:"assets/buildings/production/forge.png"},
+ miellerie:{name:"Miellerie",emoji:"🍯",price:2200,level:1,kind:"production",production:true,img:"assets/buildings/production/miellerie.png"},
+ serre:{name:"Serre",emoji:"🌿",price:3300,level:1,kind:"production",production:true,img:"assets/buildings/production/serre.png"},
+ pepiniere:{name:"Pépinière",emoji:"🌱",price:2500,level:1,kind:"production",production:true,img:"assets/buildings/production/pepiniere.png"},
+ atelierMenuiserie:{name:"Atelier de menuiserie",emoji:"🪚",price:3100,level:1,kind:"production",production:true,img:"assets/buildings/production/atelier-menuiserie.png"},
+ charbonniere:{name:"Charbonnière",emoji:"🪵",price:2700,level:1,kind:"production",production:true,img:"assets/buildings/production/charbonniere.png"}};
 const FARM_EDIT_ASSETS={
  maison_bleue:{name:"Maison de ferme bleue",img:"assets/buildings/ferme/maison_ferme_bleue.png",w:15,h:19,level:1,price:0},
  maison_rouge:{name:"Maison de ferme rouge",img:"assets/buildings/ferme/maison_ferme_rouge.png",w:15,h:19,level:2,price:150},
@@ -95,12 +95,12 @@ const BUILDING_LEVEL_BENEFITS={
  pond:["Élevage de base","Capacité augmentée","Capacité augmentée","Capacité augmentée","Capacité maximale actuelle"]
 };
 const EXPANSION_COSTS={5:300,6:500,7:800,8:1200,9:1800,10:2600,11:3800,12:5500,13:8000,14:11500,15:16000};
-const ZONES={main:{name:"Ferme principale",emoji:"🌾",type:"farm",cost:0,start:5,level:1},production:{name:"Zone de production",emoji:"🏭",type:"production",cost:0,start:16,level:1},prairie:{name:"Prairie sauvage",emoji:"🌿",type:"farm",cost:1200,start:4,level:7},forest:{name:"Bois enchanté",emoji:"🌲",type:"forest",cost:1800,start:5,level:4},mine:{name:"Mine ancienne",emoji:"⛏️",type:"mine",cost:3500,start:5,level:8},freeA:{name:"Terrain libre A",emoji:"🗺️",type:"free",cost:9000,start:5,level:20},freeB:{name:"Terrain libre B",emoji:"🗺️",type:"free",cost:18000,start:5,level:30}};
+const ZONES={main:{name:"Ferme principale",emoji:"🌾",type:"farm",cost:0,start:5,level:1},production:{name:"Zone de production",emoji:"🏭",type:"production",cost:0,start:16,level:1},livestock:{name:"Zone d’élevage",emoji:"🐾",type:"livestock",cost:1600,start:16,level:7},prairie:{name:"Prairie sauvage",emoji:"🌿",type:"farm",cost:1200,start:4,level:7},forest:{name:"Bois enchanté",emoji:"🌲",type:"forest",cost:1800,start:5,level:4},mine:{name:"Mine ancienne",emoji:"⛏️",type:"mine",cost:3500,start:5,level:8},freeA:{name:"Terrain libre A",emoji:"🗺️",type:"free",cost:9000,start:5,level:20},freeB:{name:"Terrain libre B",emoji:"🗺️",type:"free",cost:18000,start:5,level:30}};
 function emptyTile(){return{state:"grass",crop:null,plantedAt:null,building:null,resource:null,startedAt:null,decor:null,decorRotation:0}}
 function emptyFarm(){return Array.from({length:FARM_SIZE},()=>Array.from({length:FARM_SIZE},emptyTile))}
 function normTile(t={}){if("s" in t&&!t.state){let map={grass:"grass",soil:"plowed",crop:"planted",ready:"ready",sapling:"sapling",tree:"tree",mining:"mining",ore:"ore",mushroom:"mushroom",mushready:"mushready"};return{state:map[t.s]||"grass",crop:t.crop||null,plantedAt:t.at||null,building:t.building||null,resource:t.ore||null,startedAt:t.at||null}}return{...emptyTile(),...t,decor:t.decor||null,decorRotation:Number(t.decorRotation)||0}}
 function normFarm(f){let out=emptyFarm();if(!Array.isArray(f))return out;let h=Math.min(FARM_SIZE,f.length||0),w=Math.min(FARM_SIZE,Math.max(0,...f.map(r=>Array.isArray(r)?r.length:0)));let ox=w<=10?Math.floor((FARM_SIZE-w)/2):0,oy=h<=10?Math.floor((FARM_SIZE-h)/2):0;for(let y=0;y<h;y++)for(let x=0;x<Math.min(w,f[y]?.length||0);x++)out[y+oy][x+ox]=normTile(f[y][x]);return out}
-let game={version:59.13,editMode:false,selectedEditAsset:null,editMoveId:null,editOwnedAssets:{},orders:[],ordersDone:0,mineSupplies:{charge:0,spore:0},forestSupplies:{sapling:0},mastery:{farm:0,animal:0,forest:0,mine:0},missions:[],missionsDone:0,money:250,level:1,xp:0,selectedTool:"plow",selectedCrop:"wheat",selectedBuilding:"barn",selectedDecor:"tree_green",buildTab:"buildings",mineMode:"ore",moveSource:null,seeds:{wheat:3,carrot:2,corn:1},stock:{wheat:0,carrot:0,corn:0,eggs:0,milk:0,fish:0,feed:0,wood:0,plank:0,stone:0,iron:0,diamond:0,ruby:0,mushroom:0,flour:0,cheese:0,ingot:0},chickens:0,cows:0,fishCount:0,lastEggAt:Date.now(),lastMilkAt:Date.now(),lastFishAt:Date.now(),fedUntil:{coop:0,stable:0,pond:0},buildingLevels:{barn:1,coop:1,stable:1,pond:1,mill:1},autoFeed:false,currentZone:"main",zones:{}};
+let game={version:59.13,zoneToolbarCollapsed:{},editMode:false,selectedEditAsset:null,editMoveId:null,editOwnedAssets:{},orders:[],ordersDone:0,mineSupplies:{charge:0,spore:0},forestSupplies:{sapling:0},mastery:{farm:0,animal:0,forest:0,mine:0},missions:[],missionsDone:0,money:250,level:1,xp:0,selectedTool:"plow",selectedCrop:"wheat",selectedBuilding:"barn",selectedDecor:"tree_green",buildTab:"buildings",mineMode:"ore",moveSource:null,seeds:{wheat:3,carrot:2,corn:1},stock:{wheat:0,carrot:0,corn:0,eggs:0,milk:0,fish:0,feed:0,wood:0,plank:0,stone:0,iron:0,diamond:0,ruby:0,mushroom:0,flour:0,cheese:0,ingot:0},chickens:0,cows:0,fishCount:0,livestockPositions:{chicken:[],cow:[]},livestockReady:{eggs:0,milk:0},lastEggAt:Date.now(),lastMilkAt:Date.now(),lastFishAt:Date.now(),fedUntil:{coop:0,stable:0,pond:0},buildingLevels:{barn:1,coop:1,stable:1,pond:1,mill:1},autoFeed:false,currentZone:"main",zones:{}};
 function freshZones(){let z={};for(const[k,d]of Object.entries(ZONES))z[k]={unlocked:k==="main"||k==="production",type:d.type,size:d.start,farm:emptyFarm(),buildingLevels:{},buildingStars:{},slotBuildings:{},editPlacements:[]};return z}
 function migrate(raw){let d={...raw};let zones=freshZones();let v20=raw?.zones&&Object.values(raw.zones).some(z=>z&&typeof z.size==="number");
  if(v20){for(const k of Object.keys(zones)){let o=raw.zones?.[k];if(o){zones[k]={...zones[k],...o,farm:normFarm(o.farm)}}}zones.main.farm=normFarm(raw.zones?.main?.farm||raw.farm||zones.main.farm);zones.main.size=Math.max(zones.main.size,Math.min(FARM_SIZE,raw.zones?.main?.size||raw.expansionLevel+5||ZONES.main.start));}
@@ -124,12 +124,12 @@ d.version=59.13;
 // V59.13 — sortie du mode test V59.06 : une zone ouverte artificiellement avant son niveau réel
 // est reverrouillée, sans effacer son contenu. Elle redeviendra accessible normalement.
 for(const [zk,zd] of Object.entries(ZONES)){
- if(zk!=="main"&&zk!=="production"&&zones[zk]&&Number(raw.level||1)<Number(zd.level||1))zones[zk].unlocked=false;
+ if(zk!=="main"&&zk!=="production"&&zk!=="livestock"&&zones[zk]&&Number(raw.level||1)<Number(zd.level||1))zones[zk].unlocked=false;
 }
 d.editOwnedAssets={...(raw.editOwnedAssets||{})};
 for(const z of Object.values(zones))for(const item of z.editPlacements||[])if(item?.asset)d.editOwnedAssets[item.asset]=true;
 for(const key of Object.keys(d.editOwnedAssets))if(!FARM_EDIT_ASSETS[key])delete d.editOwnedAssets[key];
-d.mineSupplies={charge:0,spore:0,...(raw.mineSupplies||{})};d.forestSupplies={sapling:0,...(raw.forestSupplies||{})};d.mastery={farm:0,animal:0,forest:0,mine:0,...(raw.mastery||{})};d.missions=Array.isArray(raw.missions)?raw.missions:[];d.missionsDone=raw.missionsDone||0;d.orders=Array.isArray(raw.orders)?raw.orders:[];d.ordersDone=raw.ordersDone||0;d.zones=zones;d.currentZone=raw.currentZone||raw.current||"main";if(!zones[d.currentZone]?.unlocked)d.currentZone="main";d.seeds={wheat:3,carrot:2,corn:1,...(raw.seeds||{})};d.stock={...game.stock,...(raw.stock||{})};d.chickens=raw.chickens||0;d.cows=raw.cows||0;d.fishCount=raw.fishCount||0;d.lastEggAt=raw.lastEggAt||Date.now();d.lastMilkAt=raw.lastMilkAt||Date.now();d.lastFishAt=raw.lastFishAt||Date.now();d.fedUntil={coop:0,stable:0,pond:0,...(raw.fedUntil||{})};d.buildingLevels={barn:1,coop:1,stable:1,pond:1,mill:1,...(raw.buildingLevels||{})};d.autoFeed=!!raw.autoFeed;d.mineMode=raw.mineMode||"ore";d.selectedDecor=raw.selectedDecor||"tree_green";d.moveSource=null;d.editMode=false;d.selectedEditAsset=null;d.editMoveId=null;for(const z of Object.values(zones))if(!Array.isArray(z.editPlacements))z.editPlacements=[];return d}
+d.mineSupplies={charge:0,spore:0,...(raw.mineSupplies||{})};d.forestSupplies={sapling:0,...(raw.forestSupplies||{})};d.mastery={farm:0,animal:0,forest:0,mine:0,...(raw.mastery||{})};d.missions=Array.isArray(raw.missions)?raw.missions:[];d.missionsDone=raw.missionsDone||0;d.orders=Array.isArray(raw.orders)?raw.orders:[];d.ordersDone=raw.ordersDone||0;d.zones=zones;d.currentZone=raw.currentZone||raw.current||"main";if(!zones[d.currentZone]?.unlocked)d.currentZone="main";d.seeds={wheat:3,carrot:2,corn:1,...(raw.seeds||{})};d.stock={...game.stock,...(raw.stock||{})};d.chickens=raw.chickens||0;d.cows=raw.cows||0;d.fishCount=raw.fishCount||0;d.livestockPositions={chicken:Array.isArray(raw.livestockPositions?.chicken)?raw.livestockPositions.chicken:[],cow:Array.isArray(raw.livestockPositions?.cow)?raw.livestockPositions.cow:[]};d.livestockReady={eggs:Math.max(0,Number(raw.livestockReady?.eggs)||0),milk:Math.max(0,Number(raw.livestockReady?.milk)||0)};d.lastEggAt=raw.lastEggAt||Date.now();d.lastMilkAt=raw.lastMilkAt||Date.now();d.lastFishAt=raw.lastFishAt||Date.now();d.fedUntil={coop:0,stable:0,pond:0,...(raw.fedUntil||{})};d.buildingLevels={barn:1,coop:1,stable:1,pond:1,mill:1,...(raw.buildingLevels||{})};d.autoFeed=!!raw.autoFeed;d.zoneToolbarCollapsed={...(raw.zoneToolbarCollapsed||{})};d.mineMode=raw.mineMode||"ore";d.selectedDecor=raw.selectedDecor||"tree_green";d.moveSource=null;d.editMode=false;d.selectedEditAsset=null;d.editMoveId=null;for(const z of Object.values(zones))if(!Array.isArray(z.editPlacements))z.editPlacements=[];return d}
 function load(){let s=localStorage.getItem(SAVE_KEY);if(!s){game.zones=freshZones();return}try{game={...game,...migrate(JSON.parse(s))}}catch(e){game.zones=freshZones()}}
 function save(){if(RESETTING_GAME)return;game.savedAt=Date.now();let data=JSON.stringify(game);try{let prev=localStorage.getItem(SAVE_KEY);if(prev)localStorage.setItem(BACKUP_KEY,prev);localStorage.setItem(SAVE_KEY,data)}catch(e){console.error("Sauvegarde impossible",e)}}
 function zone(){return game.zones[game.currentZone]}function farm(){return zone().farm}function size(){return zone().size}function unlockBounds(){let n=Math.max(1,Math.min(FARM_SIZE,size())),start=Math.floor((FARM_SIZE-n)/2);return{start,end:start+n}}function unlocked(x,y){let b=unlockBounds();return x>=b.start&&x<b.end&&y>=b.start&&y<b.end}
@@ -205,7 +205,7 @@ function tileAsset(t){if(t.decor&&DECORS[t.decor])return DECORS[t.decor].img;
 }
 function tileIcon(t){if(t.building)return BUILDINGS[t.building]?.emoji||"🏗️";if(t.state==="planted")return Date.now()-t.plantedAt<CROPS[t.crop].time/2?"🌱":"🌿";if(t.state==="ready")return CROPS[t.crop].ready;if(t.state==="sapling")return"🌱";if(t.state==="tree")return"🌲";if(t.state==="mining")return"⛏️";if(t.state==="ore")return{stone:"🪨",iron:"⚙️",diamond:"💎",ruby:"♦️"}[t.resource]||"🪨";if(["mushroom","mushready"].includes(t.state))return"🍄";return""}
 function setTileVisual(b,t){let src=tileAsset(t);if(src){let im=document.createElement("img");im.className="tile-art";im.src=src;im.alt="";im.draggable=false;if(t.decor)im.style.setProperty("--rot",`${Number(t.decorRotation)||0}deg`);im.onerror=()=>{im.remove();b.insertAdjacentText("afterbegin",tileIcon(t))};b.appendChild(im)}else b.textContent=tileIcon(t)}
-function renderFarm(){let el=document.getElementById("farm");let sceneFarm=zone().type==="farm"&&game.currentZone==="main";let sceneProduction=zone().type==="production";let freeZone=["freeA","freeB"].includes(game.currentZone);let illustratedKind=freeZone?(zone().type==="farm"?"prairie":zone().type):game.currentZone;let sceneIllustrated=["prairie","forest","mine"].includes(illustratedKind);el.className=`farm zone-${zone().type}${sceneFarm?" farm-scene-main":""}${sceneProduction?" production-scene":""}${sceneIllustrated?` illustrated-zone illustrated-${illustratedKind}`:""}`;el.innerHTML="";if(sceneProduction){renderProductionSlots(el);renderFarmEditLayer(el);return}let grid=el;if(sceneFarm||sceneIllustrated){grid=document.createElement("div");grid.className=sceneFarm?"farm-field-grid":"illustrated-field-grid";el.appendChild(grid)}for(let y=0;y<FARM_SIZE;y++)for(let x=0;x<FARM_SIZE;x++){let t=farm()[y][x],b=document.createElement("button");b.className="tile";b.dataset.x=x;b.dataset.y=y;if(!unlocked(x,y)){b.classList.add("locked");b.setAttribute("aria-label","Terrain verrouillé");grid.appendChild(b);continue}let footprint=buildingAtCell(x,y);if(footprint&&!(footprint.x===x&&footprint.y===y)){b.classList.add("building-footprint");b.dataset.building=footprint.key}mature(t);if(t.decor)b.classList.add("decorated");if(t.building){b.classList.add("building");let[fw,fh]=buildingFootprint(t.building);b.style.setProperty("--fw",fw);b.style.setProperty("--fh",fh);if(t.building==="pond")b.classList.add("water")}if(["plowed","planted","ready"].includes(t.state))b.classList.add(t.state==="ready"?"ready":"plowed");if(["sapling","tree"].includes(t.state))b.classList.add("forest-tile");if(["mining","ore"].includes(t.state))b.classList.add("rock");if(game.moveSource&&game.moveSource.zone===game.currentZone&&game.moveSource.x===x&&game.moveSource.y===y)b.classList.add("selected");setTileVisual(b,t);let total=["sapling","mining","mushroom"].includes(t.state)?specialDuration(t.state):0;if(total){let at=t.plantedAt||t.startedAt||Date.now(),elapsed=Math.max(0,Date.now()-at),p=Math.max(0,Math.min(99,elapsed/total*100));let bar=document.createElement("div");bar.className="crop-progress";bar.innerHTML=`<i style="width:${p}%"></i>`;b.appendChild(bar)}grid.appendChild(b)}renderFarmEditLayer(el)}
+function renderFarm(){let el=document.getElementById("farm");let sceneFarm=zone().type==="farm"&&game.currentZone==="main";let sceneProduction=zone().type==="production";let sceneLivestock=zone().type==="livestock";let freeZone=["freeA","freeB"].includes(game.currentZone);let illustratedKind=freeZone?(zone().type==="farm"?"prairie":zone().type):game.currentZone;let sceneIllustrated=["prairie","forest","mine","livestock"].includes(illustratedKind);el.className=`farm zone-${zone().type}${sceneFarm?" farm-scene-main":""}${sceneProduction?" production-scene":""}${sceneIllustrated?` illustrated-zone illustrated-${illustratedKind}`:""}`;el.innerHTML="";if(sceneProduction){renderProductionSlots(el);renderFarmEditLayer(el);return}if(sceneLivestock){renderLivestockAnimals(el);renderFarmEditLayer(el);return}let grid=el;if(sceneFarm||sceneIllustrated){grid=document.createElement("div");grid.className=sceneFarm?"farm-field-grid":"illustrated-field-grid";el.appendChild(grid)}for(let y=0;y<FARM_SIZE;y++)for(let x=0;x<FARM_SIZE;x++){let t=farm()[y][x],b=document.createElement("button");b.className="tile";b.dataset.x=x;b.dataset.y=y;if(!unlocked(x,y)){b.classList.add("locked");b.setAttribute("aria-label","Terrain verrouillé");grid.appendChild(b);continue}let footprint=buildingAtCell(x,y);if(footprint&&!(footprint.x===x&&footprint.y===y)){b.classList.add("building-footprint");b.dataset.building=footprint.key}mature(t);if(t.decor)b.classList.add("decorated");if(t.building){b.classList.add("building");let[fw,fh]=buildingFootprint(t.building);b.style.setProperty("--fw",fw);b.style.setProperty("--fh",fh);if(t.building==="pond")b.classList.add("water")}if(["plowed","planted","ready"].includes(t.state))b.classList.add(t.state==="ready"?"ready":"plowed");if(["sapling","tree"].includes(t.state))b.classList.add("forest-tile");if(["mining","ore"].includes(t.state))b.classList.add("rock");if(game.moveSource&&game.moveSource.zone===game.currentZone&&game.moveSource.x===x&&game.moveSource.y===y)b.classList.add("selected");setTileVisual(b,t);grid.appendChild(b)}renderFarmEditLayer(el)}
 
 const FARM_SCENE_SLOTS={L1:{left:4,top:5,width:16,height:18},L2:{left:4,top:43,width:16,height:18},R1:{left:80,top:36,width:16,height:18},R2:{left:80,top:62,width:16,height:18}};
 const PRODUCTION_SLOTS={
@@ -229,6 +229,68 @@ const PRODUCTION_SLOTS={
 };
 function productionImage(k){return BUILDINGS[k]?.img||null}
 function buildAtProductionSlot(id){let k=game.selectedBuilding,d=BUILDINGS[k];if(zone().type!=="production")return false;if(!d?.production){activatePanel("build");return missing("🏭 Choisis d’abord un bâtiment de production.")}if(game.level<d.level)return missing(`🔒 ${d.name} se débloque au niveau ${d.level}.`);zone().slotBuildings=zone().slotBuildings||{};if(zone().slotBuildings[id])return missing("🏗️ Cet emplacement est déjà occupé.");if(zoneHasBuilding(k))return missing(`🏗️ ${d.name} est déjà installé dans cette zone.`);let price=d.price;if(game.money<price)return missing(`💰 Il manque ${price-game.money} pièce(s).`);game.money-=price;zone().slotBuildings[id]=k;zone().buildingLevels=zone().buildingLevels||{};zone().buildingLevels[k]=1;save();renderAll();success(`🏭 ${d.name} installé.`)}
+function ensureLivestockPositions(kind,count,defaults){
+ game.livestockPositions=game.livestockPositions||{chicken:[],cow:[]};
+ let arr=Array.isArray(game.livestockPositions[kind])?game.livestockPositions[kind]:(game.livestockPositions[kind]=[]);
+ while(arr.length<count){let d=defaults[arr.length%defaults.length];arr.push({x:d[0],y:d[1]})}
+ if(arr.length>count)arr.length=count;
+ return arr
+}
+
+function livestockScaleKey(kind,index){return kind+":"+index}
+function getLivestockScale(kind,index){
+ game.livestockScales=game.livestockScales||{};
+ let k=livestockScaleKey(kind,index),v=Number(game.livestockScales[k]??1);
+ return Number.isFinite(v)?Math.max(.55,Math.min(1.65,v)):1;
+}
+function setLivestockScale(kind,index,v){
+ game.livestockScales=game.livestockScales||{};
+ game.livestockScales[livestockScaleKey(kind,index)]=Math.max(.55,Math.min(1.65,Number(v)||1));
+ save();renderFarm();
+}
+function showLivestockScaleControls(kind,index){
+ closeContextActions();
+ let title=document.createElement("strong");title.textContent="✏️ "+(kind==="cow"?"Vache":"Poule");contextActions.appendChild(title);
+ let minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>setLivestockScale(kind,index,getLivestockScale(kind,index)-.1);contextActions.appendChild(minus);
+ let val=document.createElement("span");val.textContent=Math.round(getLivestockScale(kind,index)*100)+" %";contextActions.appendChild(val);
+ let plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>setLivestockScale(kind,index,getLivestockScale(kind,index)+.1);contextActions.appendChild(plus);
+ let close=document.createElement("button");close.textContent="✕ Fermer";close.onclick=closeContextActions;contextActions.appendChild(close);
+ contextActions.classList.add("show");
+}
+function renderLivestockAnimals(el){
+ const layer=document.createElement("div");
+ layer.className="livestock-animal-layer"+(game.editMode?" editing":"");layer.style.setProperty("--animal-scale",String(getLivestockScale(kind,i)));layer.addEventListener("click",ev=>{if(!game.editMode)return;ev.stopPropagation();showLivestockScaleControls(kind,i)});
+ const chickenPos=[[18,48],[23,53],[28,47],[33,55],[20,59],[30,61],[25,43],[35,49]];
+ const cowPos=[[57,42],[66,48],[75,43],[61,55],[71,57],[80,51]];
+ const chickenImgs=["chicken_hen_brown.png","chicken_hen_white.png","chicken_hen_brown_eating.png"];
+ const cowImgs=["cow_standing_01.png","cow_standing_02.png","cow_standing_03.png","cow_eating.png","cow_resting_01.png","cow_resting_02.png"];
+ const add=(kind,count,defaults,imgs,dir)=>{
+  const positions=ensureLivestockPositions(kind,count,defaults);
+  for(let i=0;i<count;i++){
+   const img=document.createElement("img"),pos=positions[i];
+   img.className=`livestock-animal livestock-${kind}`;
+   img.src=`assets/animals/${dir}/${imgs[i%imgs.length]}`;
+   img.alt=kind==="chicken"?"Poule":"Vache";img.title=game.editMode?`${img.alt} — glisser pour déplacer`:img.alt;
+   img.style.left=pos.x+"%";img.style.top=pos.y+"%";
+   if(!game.editMode){
+    img.style.pointerEvents="auto";img.style.cursor="pointer";
+    img.onclick=e=>{e.preventDefault();e.stopPropagation();openLivestockContext(kind)};
+   }
+   if(game.editMode){
+    let dragging=false;
+    img.onpointerdown=e=>{e.preventDefault();e.stopPropagation();dragging=true;img.setPointerCapture?.(e.pointerId)};
+    img.onpointermove=e=>{if(!dragging)return;e.preventDefault();e.stopPropagation();let pt=editPointFromEvent(e);pos.x=pt.x;pos.y=pt.y;img.style.left=pos.x+"%";img.style.top=pos.y+"%"};
+    img.onpointerup=e=>{if(!dragging)return;e.preventDefault();e.stopPropagation();dragging=false;img.releasePointerCapture?.(e.pointerId);save();success("✋ Position de l’animal sauvegardée.")};
+    img.onpointercancel=()=>{dragging=false};
+   }
+   layer.appendChild(img);
+  }
+ };
+ add("chicken",game.chickens||0,chickenPos,chickenImgs,"chicken");
+ add("cow",game.cows||0,cowPos,cowImgs,"cow");
+ el.appendChild(layer);
+}
+
 function renderProductionSlots(el){let layer=document.createElement("div");layer.className="production-slot-layer";zone().slotBuildings=zone().slotBuildings||{};for(const[id,pos]of Object.entries(PRODUCTION_SLOTS)){let slot=document.createElement("button"),k=zone().slotBuildings[id];slot.className="production-slot"+(k?" occupied":"");slot.style.cssText=`left:${pos.left}%;top:${pos.top}%;width:${pos.width}%;height:${pos.height}%;`;slot.dataset.slot=id;if(k){let im=document.createElement("img");im.src=productionImage(k);im.alt=BUILDINGS[k]?.name||k;slot.appendChild(im);slot.title=BUILDINGS[k]?.name||k;slot.onclick=e=>{e.stopPropagation();openInstalledProductionContext(id,k)}}else{slot.title="Emplacement de production libre";slot.onclick=e=>{e.stopPropagation();if(game.productionMoveSource){moveProductionToSlot(id);return}openProductionContext(id)}}layer.appendChild(slot)}el.appendChild(layer)}
 function buildAtFarmSlot(id){let d=BUILDINGS[game.selectedBuilding],k=game.selectedBuilding;if(!d)return msg("Choisis un bâtiment.");if(game.selectedTool!=="build")return msg("🛠️ Choisis Construire puis un bâtiment.");if(d.zoneType||zone().type!=="farm")return msg("Ce bâtiment ne se place pas ici.");zone().slotBuildings=zone().slotBuildings||{};if(zone().slotBuildings[id])return msg("🏗️ Cet emplacement est déjà occupé.");if(zoneHasBuilding(k))return msg(`🏗️ Cette parcelle possède déjà : ${d.name}.`);if(game.level<d.level)return msg(`🔒 ${d.name} : niveau ${d.level}.`);if(game.money<d.price)return missing(`💰 Ressources insuffisantes : il manque ${d.price-game.money} pièce(s) pour ${d.name}.`);game.money-=d.price;zone().slotBuildings[id]=k;zone().buildingLevels=zone().buildingLevels||{};zone().buildingLevels[k]=1;if(k==="coop")game.fedUntil.coop=Date.now()+FEED_MS;if(k==="stable")game.fedUntil.stable=Date.now()+FEED_MS;if(k==="pond")game.fedUntil.pond=Date.now()+FEED_MS;save();renderAll();success(`🏗️ ${d.name} construit.`)}
 function renderFarmSlots(el){let layer=document.createElement("div");layer.className="farm-slot-layer";zone().slotBuildings=zone().slotBuildings||{};zone().slotDecorations=zone().slotDecorations||{};for(const[id,pos]of Object.entries(FARM_SCENE_SLOTS)){let slot=document.createElement("button"),k=zone().slotBuildings[id],decor=zone().slotDecorations[id];slot.className="farm-scene-slot"+((k||decor)?" occupied":"");slot.style.cssText=`left:${pos.left}%;top:${pos.top}%;width:${pos.width}%;height:${pos.height}%`;slot.dataset.slot=id;if(k){let src=ASSETS.buildings[k];let lv=Math.max(1,Math.min(3,zoneBLevel(k)||1));let im=document.createElement("img");im.src=src+lv+(k==="sawmill"&&lv===2?"..png":".png");im.alt=BUILDINGS[k]?.name||"Bâtiment";slot.appendChild(im);slot.title=BUILDINGS[k]?.name||k}else if(decor&&DECORS[decor]){let im=document.createElement("img");im.src=DECORS[decor].img;im.alt=DECORS[decor].name;slot.appendChild(im);slot.title=DECORS[decor].name;slot.onclick=e=>{e.stopPropagation();openFarmSlotDecorContext(id,decor)}}else{slot.title="Emplacement décoration libre";slot.onclick=e=>{e.stopPropagation();openFarmSlotDecorContext(id)}}layer.appendChild(slot)}el.appendChild(layer)}
@@ -288,21 +350,47 @@ const STOCK_META={wheat:["🌾","Blé","Récoltes"],carrot:["🥕","Carotte","R�
 function sellResource(k,n){let have=game.stock[k]||0,p=SELL_PRICE[k]||0;if(!p||have<=0)return msg("Rien à vendre.");let q=Math.min(have,n===Infinity?have:n);game.stock[k]-=q;game.money+=q*p;msg(`💰 ${STOCK_META[k]?.[1]||k} ×${q} : +${q*p} pièces.`);save();renderAll()}
 function sellAll(){let earned=0;for(const[k,p]of Object.entries(SELL_PRICE)){earned+=(game.stock[k]||0)*p;game.stock[k]=0}if(!earned)return msg("Rien à vendre.");game.money+=earned;msg(`💰 Vente totale : +${earned} pièces.`);save();renderAll()}
 function buyAnimal(kind){let c={chicken:["coop","chickens",250,"🐔"],cow:["stable","cows",900,"🐄"],fish:["pond","fishCount",450,"🐟"]}[kind],[b,f,p,e]=c;if(!hasBuilding(b)||game[f]>=animalCap(b)||game.money<p)return msg("Achat impossible.");game.money-=p;game[f]++;msg(`${e} Animal ajouté.`);save();renderAll()}
-function feed(kind){let crop=kind==="stable"?"wheat":"corn";if(game.stock[crop]<1)return missing(`🍽️ Ressource manquante : 1 ${CROPS[crop].name}.`);game.stock[crop]--;game.fedUntil[kind]=Math.max(Date.now(),game.fedUntil[kind]||0)+FEED_MS;save();renderAll()}
+function feed(kind){let crop=kind==="stable"?"wheat":"corn";if(game.stock[crop]<1)return missing(`🍽️ Ressource manquante : 1 ${CROPS[crop].name}.`);let now=Date.now(),wasStopped=(game.fedUntil[kind]||0)<=now;game.stock[crop]--;game.fedUntil[kind]=Math.max(now,game.fedUntil[kind]||0)+FEED_MS;if(wasStopped){if(kind==="coop")game.lastEggAt=now;if(kind==="stable")game.lastMilkAt=now;if(kind==="pond")game.lastFishAt=now}save();renderAll()}
 function makeFeed(){if(game.stock.wheat<1||game.stock.corn<2)return missing(`⚙️ Ressources manquantes : ${Math.max(0,1-game.stock.wheat)} blé et ${Math.max(0,2-game.stock.corn)} maïs.`);let lv=Math.max(1,bLevel("mill"));game.stock.wheat--;game.stock.corn-=2;game.stock.feed+=2+lv;save();renderAll()}
 function autoFeedTick(){if(!game.autoFeed||!hasBuilding("mill")||game.stock.feed<=0)return;for(const k of["coop","stable","pond"])if(hasBuilding(k)&&(game.fedUntil[k]||0)-Date.now()<10000&&game.stock.feed>0){game.stock.feed--;game.fedUntil[k]=Date.now()+FEED_MS}}
-function production(){autoFeedTick();let now=Date.now();function tick(b,count,clock,interval,stock){if(!hasBuilding(b)||count<=0||now>=(game.fedUntil[b]||0))return;let cycles=Math.floor((now-game[clock])/interval);if(cycles>0){game.stock[stock]+=cycles*count;gainMastery("animal",cycles);game[clock]+=cycles*interval;save()}}tick("coop",game.chickens,"lastEggAt",10*60*1000,"eggs");tick("stable",game.cows,"lastMilkAt",20*60*1000,"milk");tick("pond",game.fishCount,"lastFishAt",30*60*1000,"fish")}
+function production(){autoFeedTick();let now=Date.now();game.livestockReady=game.livestockReady||{eggs:0,milk:0};function tick(b,count,clock,interval,stock){if(!hasBuilding(b)||count<=0||now>=(game.fedUntil[b]||0))return;let cycles=Math.floor((now-game[clock])/interval);if(cycles>0){if(stock==="eggs"||stock==="milk")game.livestockReady[stock]=(game.livestockReady[stock]||0)+cycles*count;else game.stock[stock]+=cycles*count;game[clock]+=cycles*interval;save()}}tick("coop",game.chickens,"lastEggAt",10*60*1000,"eggs");tick("stable",game.cows,"lastMilkAt",20*60*1000,"milk");tick("pond",game.fishCount,"lastFishAt",30*60*1000,"fish")}
+function livestockInfo(kind){return kind==="chicken"?{b:"coop",stock:"eggs",clock:"lastEggAt",interval:10*60*1000,emoji:"🥚",label:"Œufs",animal:"Poule"}:{b:"stable",stock:"milk",clock:"lastMilkAt",interval:20*60*1000,emoji:"🥛",label:"Lait",animal:"Vache"}}
+function collectLivestock(kind){production();let i=livestockInfo(kind),q=Math.max(0,game.livestockReady?.[i.stock]||0);if(!q)return missing(`${i.emoji} Rien à collecter pour le moment.`);game.stock[i.stock]=(game.stock[i.stock]||0)+q;game.livestockReady[i.stock]=0;gainMastery("animal",q);missionProgress("animal",q);addXP(Math.max(1,q*2));save();renderAll();closeContextActions();success(`${i.emoji} ${i.label} ×${q} ajouté${q>1?"s":""} au Stock.`)}
+function openLivestockContext(kind){production();let i=livestockInfo(kind),ready=Math.max(0,game.livestockReady?.[i.stock]||0),count=kind==="chicken"?(game.chickens||0):(game.cows||0),now=Date.now();contextActions.innerHTML="";contextActions.classList.remove("hidden");let title=document.createElement("strong");title.className="context-title";title.textContent=`${kind==="chicken"?"🐔":"🐄"} ${i.animal} · ${i.label}`;contextActions.appendChild(title);if(ready>0)contextButton(`${i.emoji} Collecter ${ready}`,()=>collectLivestock(kind));let fed=(game.fedUntil[i.b]||0)>now;if(!fed)contextButton("😴 Production arrêtée · nourrir dans Gestion",()=>{},true);else{let left=Math.max(0,i.interval-(now-(game[i.clock]||now))),sec=Math.ceil(left/1000),txt=sec>=60?`${Math.floor(sec/60)} min ${sec%60} s`:`${sec} s`;contextButton(`⏳ Prochaine production · ${txt}`,()=>{},true)}contextButton(`${kind==="chicken"?"🐔":"🐄"} ${count} animal${count>1?"aux":""} · ${ready} prêt${ready>1?"s":""}`,()=>{},true);contextButton("✕ Fermer",closeContextActions)}
 function feedPct(k){return Math.max(0,Math.min(100,((game.fedUntil[k]||0)-Date.now())/FEED_MS*100))}
 function upgradeCost(k,lv){return UPGRADE_RESOURCE_COSTS[k]?.[lv]||null}
 function resourceCostText(cost){return Object.entries(cost||{}).map(([r,q])=>`${RESOURCE_ICONS[r]||"📦"} ${q}`).join(" · ")}
 function missingUpgradeResources(cost){return Object.entries(cost||{}).filter(([r,q])=>(game.stock[r]||0)<q).map(([r,q])=>`${RESOURCE_ICONS[r]||r} ${q-(game.stock[r]||0)}`).join(" · ")}
 function upgrade(k){let lv=zoneBLevel(k);if(!lv)return msg("Bâtiment absent de cette parcelle.");if(lv>=BUILDING_MAX_LEVEL)return msg("⭐ Niveau maximum actuel. Les paliers Étoiles sont réservés pour une future évolution.");let cost=upgradeCost(k,lv);if(!cost)return msg("Cette amélioration n’est pas encore configurée.");let miss=missingUpgradeResources(cost);if(miss)return missing(`📦 Ressources manquantes : ${miss}.`);for(const[r,q]of Object.entries(cost))game.stock[r]-=q;zone().buildingLevels=zone().buildingLevels||{};zone().buildingStars=zone().buildingStars||{};zone().buildingLevels[k]=lv+1;if(zone().buildingStars[k]==null)zone().buildingStars[k]=0;msg(`⬆️ ${BUILDINGS[k].name} passe niveau ${lv+1}.`);save();renderAll()}
 function expandCurrent(){if(size()>=FARM_SIZE)return;let cost=EXPANSION_COSTS[size()]||20000;if(game.money<cost)return missing(`💰 Il manque ${cost-game.money} pièce(s) pour agrandir.`);game.money-=cost;zone().size++;save();renderAll()}
-function travel(k){if(!game.zones[k].unlocked)return unlockZone(k);game.currentZone=k;game.moveSource=null;playerStartForZone();closeMap();msg(`🗺️ Déplacement : ${ZONES[k].name}.`);save();renderAll()}
+function travel(k){if(!game.zones[k].unlocked)return unlockZone(k);closeContextActions();game.currentZone=k;game.moveSource=null;playerStartForZone();closeMap();msg(`🗺️ Déplacement : ${ZONES[k].name}.`);save();renderAll()}
 function unlockZone(k){let d=ZONES[k],z=game.zones[k];if(game.level<(d.level||1))return missing(`🔒 ${d.name} se débloque au niveau ${d.level}.`);if(game.money<d.cost)return missing(`💰 Il manque ${d.cost-game.money} pièce(s) pour débloquer cette zone.`);game.money-=d.cost;z.unlocked=true;if(d.type==="free")return chooseFree(k);travel(k)}
-function openMap(){if(typeof closeGameModal==="function"&&typeof modal!=="undefined"&&!modal.classList.contains("hidden"))closeGameModal();renderMap();document.getElementById("map-modal").classList.remove("hidden");document.body.classList.add("modal-open")}function closeMap(){document.getElementById("map-modal").classList.add("hidden");document.body.classList.remove("modal-open")}
-function renderMap(){document.getElementById("map-zones").innerHTML=Object.entries(ZONES).map(([k,d])=>{let z=game.zones[k],locked=!z.unlocked,spec=z.type==="free"?"À spécialiser":z.type==="farm"?"Zone agricole":z.type==="production"?"Bâtiments & transformations":z.type==="forest"?"Bois & ressources":"Mine & champignons";return `<button class="zone-card ${game.currentZone===k?"current":""} ${locked?"locked-zone":""}" data-zone="${k}"><h3>${locked?"🔒":d.emoji} ${d.name}</h3><p>${spec} · ${z.size}×${z.size}</p><p>${locked?`Niv.${d.level||1} · ${d.cost}💰`:"Voyager vers cette zone."}</p></button>`}).join("");document.querySelectorAll("[data-zone]").forEach(b=>b.onclick=()=>travel(b.dataset.zone))}
-function chooseFree(k){document.getElementById("map-zones").innerHTML=`<div class="spec-wrap"><h3>Choisis la spécialisation de ${ZONES[k].name}</h3><button class="zone-card" data-spec="farm"><h3>🌾 Nouveau champ</h3><p>Agriculture, bâtiments et élevage.</p></button><button class="zone-card" data-spec="forest"><h3>🌲 Nouveau bois</h3><p>Arbres, bois et scierie.</p></button><button class="zone-card" data-spec="mine"><h3>⛏️ Nouvelle mine</h3><p>Minerais et champignons.</p></button></div>`;document.querySelectorAll("[data-spec]").forEach(b=>b.onclick=()=>{game.zones[k].type=b.dataset.spec;game.zones[k].farm=emptyFarm();game.currentZone=k;save();closeMap();renderAll()})}
+
+const DOMAIN_CARD_BACKGROUNDS={"main": "farm_main_reference.png", "production": "production-zone-01.png", "prairie": "prairie-zone-01.png", "forest": "fond_bois.png", "mine": "fond_mine.png", "livestock": "livestock-zone-01.png"};
+function openMap(){if(typeof closeGameModal==="function"&&typeof modal!=="undefined"&&!modal.classList.contains("hidden"))closeGameModal();renderMap();document.getElementById("map-modal").classList.remove("hidden");document.body.classList.add("modal-open")}function closeMap(){document.getElementById("map-modal").classList.add("hidden");document.body.classList.remove("modal-open")
+ document.querySelectorAll("[data-zone]").forEach(card=>{
+   const key=card.dataset.zone;
+   const file=DOMAIN_CARD_BACKGROUNDS[key]||DOMAIN_CARD_BACKGROUNDS[(game.zones[key]||{}).type];
+   if(file){
+     card.classList.add("domain-zone-card");
+     card.style.setProperty("--zone-bg",`url("assets/backgrounds/${file}")`);
+   }
+ });
+}
+function renderMap(){document.getElementById("map-zones").innerHTML=Object.entries(ZONES).map(([k,d])=>{let z=game.zones[k],locked=!z.unlocked,spec=z.type==="free"?"À spécialiser":z.type==="farm"?"Zone agricole":z.type==="production"?"Bâtiments & transformations":z.type==="livestock"?"Élevage & animaux":z.type==="forest"?"Bois & ressources":"Mine & champignons";return `<button class="zone-card ${game.currentZone===k?"current":""} ${locked?"locked-zone":""}" data-zone="${k}"><h3>${locked?"🔒":d.emoji} ${d.name}</h3><p>${spec} · ${z.size}×${z.size}</p><p>${locked?`Niv.${d.level||1} · ${d.cost}💰`:"Voyager vers cette zone."}</p></button>`}).join("");document.querySelectorAll("[data-zone]").forEach(b=>b.onclick=()=>travel(b.dataset.zone))}
+function chooseFree(k){document.getElementById("map-zones").innerHTML=`<div class="spec-wrap"><h3>Choisis la spécialisation de ${ZONES[k].name}</h3><button class="zone-card" data-spec="farm"><h3>🌾 Nouveau champ</h3><p>Agriculture, bâtiments et élevage.</p></button><button class="zone-card" data-spec="forest"><h3>🌲 Nouveau bois</h3><p>Arbres, bois et scierie.</p></button><button class="zone-card" data-spec="mine"><h3>⛏️ Nouvelle mine</h3><p>Minerais et champignons.</p></button></div>`;document.querySelectorAll("[data-spec]").forEach(b=>b.onclick=()=>{game.zones[k].type=b.dataset.spec;game.zones[k].farm=emptyFarm();closeContextActions();game.currentZone=k;save();closeMap();renderAll()})}
+function installLivestockBuilding(k){
+ if(zone().type!=="livestock")return missing("🐾 Ce bâtiment s’installe dans la Zone d’élevage.");
+ if(!["coop","stable"].includes(k))return missing("🐾 Bâtiment d’élevage inconnu.");
+ if(zoneHasBuilding(k))return msg(`🏗️ ${BUILDINGS[k].name} est déjà installé.`);
+ zone().slotBuildings=zone().slotBuildings||{};
+ zone().buildingLevels=zone().buildingLevels||{};
+ zone().slotBuildings[`livestock_${k}`]=k;
+ zone().buildingLevels[k]=1;
+ if(k==="coop")game.fedUntil.coop=Date.now()+FEED_MS;
+ if(k==="stable")game.fedUntil.stable=Date.now()+FEED_MS;
+ save();renderAll();success(`🏗️ ${BUILDINGS[k].name} installé gratuitement dans la Zone d’élevage.`);
+}
 function renderBuild(){
  const box=document.getElementById("building-shop");
  if(!box)return;
@@ -312,6 +400,10 @@ function renderBuild(){
    if(tabs)tabs.style.display="none";
    const entries=Object.entries(BUILDINGS).filter(([,d])=>d.production);
    box.innerHTML='<div class="zone-note">🏭 Zone spécialisée : choisis un bâtiment de production puis touche un emplacement libre.</div>'+entries.map(([k,d])=>`<button class="choice ${game.selectedBuilding===k?"active":""}" data-building="${k}" ${zoneHasBuilding(k)?"disabled":""}>${d.emoji} ${d.name}<br><small>${zoneHasBuilding(k)?"Déjà installé":d.price+"💰 · niv."+d.level+" requis"}</small></button>`).join("");
+ }else if(zone().type==="livestock"){
+   if(tabs)tabs.style.display="none";
+   const entries=[["coop",BUILDINGS.coop],["stable",BUILDINGS.stable]];
+   box.innerHTML='<div class="zone-note">🐾 Installe ici les bâtiments d’élevage. Ils sont gratuits pendant la phase de test.</div>'+entries.map(([k,d])=>`<button class="choice" data-livestock-building="${k}" ${zoneHasBuilding(k)?"disabled":""}>${d.emoji} ${d.name}<br><small>${zoneHasBuilding(k)?"Déjà installé · niv."+zoneBLevel(k):"GRATUIT · niveau 1"}</small></button>`).join("");
  }else if(zone().type==="farm"){
    if(tabs)tabs.style.display="grid";
    if(buildSection)buildSection.querySelectorAll("[data-buildtab]").forEach(b=>b.classList.toggle("active",b.dataset.buildtab===game.buildTab));
@@ -323,8 +415,9 @@ function renderBuild(){
    box.innerHTML='<div class="zone-note">Choisis le bâtiment spécial de cette parcelle, puis touche une case verte libre.</div>'+entries.map(([k,d])=>`<button class="choice ${game.selectedBuilding===k?"active":""}" data-building="${k}" ${zoneHasBuilding(k)?"disabled":""}>${d.emoji} ${d.name}<br><small>${zoneHasBuilding(k)?"Déjà installé · niv."+zoneBLevel(k):d.price+"💰"}</small></button>`).join("");
  }
  box.querySelectorAll("[data-building]").forEach(b=>b.onclick=()=>{game.selectedBuilding=b.dataset.building;game.selectedTool="build";closeGameModal();msg(zone().type==="production"?`🏭 ${BUILDINGS[game.selectedBuilding].name} sélectionné : touche un emplacement libre.`:`🔨 ${BUILDINGS[game.selectedBuilding].name} sélectionné : touche une case verte libre.`);renderAll()});
+ box.querySelectorAll("[data-livestock-building]").forEach(b=>b.onclick=()=>installLivestockBuilding(b.dataset.livestockBuilding));
 } 
-function renderAnimals(){let box=document.getElementById("animals");if(zone().type!=="farm"){box.innerHTML='<p class="hint">Les animaux sont gérés depuis une zone agricole.</p>';return}let rows=[["coop","🐔","Poules","chickens","chicken",250],["stable","🐄","Vaches","cows","cow",900],["pond","🐟","Poissons","fishCount","fish",450]];box.innerHTML=rows.map(([b,e,n,f,a,p])=>{if(!hasBuilding(b))return `<p class="hint">${e} ${n} : ${BUILDINGS[b].name} requis.</p>`;let pct=feedPct(b),food=b==="stable"?"🌾 blé":"🌽 maïs";return `<div class="compact"><span>${e} ${n} <b>${game[f]}/${animalCap(b)}</b></span><button class="mini" data-animal="${a}">+ ${p}💰</button></div><div class="feedbar"><i style="width:${pct}%"></i></div><div class="compact"><span>${pct?`🍽️ ${Math.ceil(((game.fedUntil[b]||0)-Date.now())/1000)} s`:"😴 Arrêt"}</span><button class="mini" data-feed="${b}">Nourrir (${food})</button></div>`}).join("");document.querySelectorAll("[data-animal]").forEach(b=>b.onclick=()=>buyAnimal(b.dataset.animal));document.querySelectorAll("[data-feed]").forEach(b=>b.onclick=()=>feed(b.dataset.feed))}
+function renderAnimals(){let box=document.getElementById("animals");if(zone().type!=="livestock"){box.innerHTML='<p class="hint">🐾 Va dans la Zone d’élevage pour gérer les poules et les vaches. Les poissons auront leur propre carte.</p>';return}let rows=[["coop","🐔","Poules","chickens","chicken",250],["stable","🐄","Vaches","cows","cow",900]];box.innerHTML=rows.map(([b,e,n,f,a,p])=>{if(!zoneHasBuilding(b))return `<div class="compact"><span>${e} <b>${BUILDINGS[b].name}</b> requis pour les ${n.toLowerCase()}.</span><button class="mini" data-install-livestock="${b}">Installer GRATUIT</button></div>`;let pct=feedPct(b),food=b==="stable"?"🌾 blé":"🌽 maïs";return `<div class="compact"><span>${e} ${n} <b>${game[f]}/${animalCap(b)}</b></span><button class="mini" data-animal="${a}">+ ${p}💰</button></div><div class="feedbar"><i style="width:${pct}%"></i></div><div class="compact"><span>${pct?`🍽️ ${Math.ceil(((game.fedUntil[b]||0)-Date.now())/1000)} s`:"😴 Arrêt"}</span><button class="mini" data-feed="${b}">Nourrir (${food})</button></div>`}).join("");box.querySelectorAll("[data-install-livestock]").forEach(b=>b.onclick=()=>installLivestockBuilding(b.dataset.installLivestock));box.querySelectorAll("[data-animal]").forEach(b=>b.onclick=()=>buyAnimal(b.dataset.animal));box.querySelectorAll("[data-feed]").forEach(b=>b.onclick=()=>feed(b.dataset.feed))}
 function renderProduction(){let box=document.getElementById("production");
 if(zone().type==="forest"){
  let lv=bLevel("sawmill"),yieldN=lv?2+lv:0;
@@ -347,7 +440,7 @@ let ex=document.getElementById("expand-from-manage");if(ex)ex.onclick=expandCurr
 document.querySelectorAll("[data-upgrade]").forEach(b=>b.onclick=()=>upgrade(b.dataset.upgrade))}
 function buyMineSupply(kind,q=1){let names={charge:"charge d’extraction",spore:"spore de champignon"},unit=kind==="charge"?120:90,cost=q*unit;if(game.money<cost)return missing(`💰 Il te manque ${cost-game.money} pièce(s).`);game.money-=cost;game.mineSupplies[kind]=(game.mineSupplies[kind]||0)+q;success(`${kind==="charge"?"⛏️":"🍄"} +${q} ${names[kind]}.`);save();renderAll()}
 function buySapling(q=1){let cost=q*60;if(game.money<cost)return missing(`💰 Il te manque ${cost-game.money} pièce(s) pour ${q} jeune(s) plant(s).`);game.money-=cost;game.forestSupplies.sapling=(game.forestSupplies.sapling||0)+q;success(`🌱 +${q} jeune(s) plant(s).`);save();renderAll()}
-function renderZoneActions(){let ss=document.getElementById("seed-selector"),shop=document.getElementById("seed-shop");if(zone().type==="production"){ss.innerHTML="<div class=\"seed active\">🏭<br><small>Production</small></div>";shop.innerHTML="<p class=\"hint\">Les cultures restent dans les zones agricoles. Ici, installe tes bâtiments de production.</p>"}else if(zone().type==="farm"){ss.innerHTML=Object.entries(CROPS).map(([k,d])=>`<button class="seed ${game.selectedCrop===k?"active":""}" data-crop="${k}">${d.ready}<br><small>${game.seeds[k]}</small></button>`).join("");shop.innerHTML=Object.entries(CROPS).map(([k,d])=>`<div class="shop-line"><span>${d.ready} <b>${d.name}</b><small>Stock graines : ${game.seeds[k]} · ${d.price}💰/u</small></span><span><button data-buy="${k}" data-q="1">Acheter ×1</button><button data-buy="${k}" data-q="10">×10</button></span></div>`).join("");document.querySelectorAll("[data-crop]").forEach(b=>b.onclick=()=>{game.selectedCrop=b.dataset.crop;game.selectedTool="plant";renderAll()});document.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>buySeed(b.dataset.buy,+b.dataset.q))}else if(zone().type==="mine"){ss.innerHTML=`<button class="seed ${game.mineMode==="ore"?"active":""}" data-mine="ore">⛏️<br><small>Minerais</small></button><button class="seed ${game.mineMode==="mushroom"?"active":""}" data-mine="mushroom">🍄<br><small>Champignons</small></button>`;shop.innerHTML=`<div class="shop-line"><span>⛏️ <b>Charge d’extraction</b><small>Stock : ${game.mineSupplies.charge||0} · 120💰/u</small></span><span><button data-buy-mine="charge" data-q="1">×1</button><button data-buy-mine="charge" data-q="10">×10</button></span></div><div class="shop-line"><span>🍄 <b>Spore</b><small>Stock : ${game.mineSupplies.spore||0} · 90💰/u</small></span><span><button data-buy-mine="spore" data-q="1">×1</button><button data-buy-mine="spore" data-q="10">×10</button></span></div>`;document.querySelectorAll("[data-mine]").forEach(b=>b.onclick=()=>{game.mineMode=b.dataset.mine;game.selectedTool=game.mineMode==="ore"?"extract":"plant";renderAll()});document.querySelectorAll("[data-buy-mine]").forEach(b=>b.onclick=()=>buyMineSupply(b.dataset.buyMine,+b.dataset.q))}else{ss.innerHTML=`<div class="seed active">🌱<br><small>${game.forestSupplies.sapling||0}</small></div>`;shop.innerHTML=`<div class="shop-line"><span>🌱 <b>Jeune plant</b><small>Stock : ${game.forestSupplies.sapling||0} · 60💰/u · pousse ${Math.round(specialDuration("sapling")/60000)} min</small></span><span><button data-sap="1">Acheter ×1</button><button data-sap="10">×10</button></span></div>`;shop.querySelectorAll("[data-sap]").forEach(b=>b.onclick=()=>buySapling(+b.dataset.sap))}}
+function renderZoneActions(){let ss=document.getElementById("seed-selector"),shop=document.getElementById("seed-shop");if(zone().type==="production"){ss.innerHTML="<div class=\"seed active\">🏭<br><small>Production</small></div>";shop.innerHTML="<p class=\"hint\">Les cultures restent dans les zones agricoles. Ici, installe tes bâtiments de production.</p>"}else if(zone().type==="livestock"){ss.innerHTML="<div class=\"seed active\">🐾<br><small>Élevage</small></div>";shop.innerHTML="<p class=\"hint\">Zone dédiée aux animaux. Achète et nourris tes poules et vaches depuis Gestion → Animaux.</p>"}else if(zone().type==="farm"){ss.innerHTML=Object.entries(CROPS).map(([k,d])=>`<button class="seed ${game.selectedCrop===k?"active":""}" data-crop="${k}">${d.ready}<br><small>${game.seeds[k]}</small></button>`).join("");shop.innerHTML=Object.entries(CROPS).map(([k,d])=>`<div class="shop-line"><span>${d.ready} <b>${d.name}</b><small>Stock graines : ${game.seeds[k]} · ${d.price}💰/u</small></span><span><button data-buy="${k}" data-q="1">Acheter ×1</button><button data-buy="${k}" data-q="10">×10</button></span></div>`).join("");document.querySelectorAll("[data-crop]").forEach(b=>b.onclick=()=>{game.selectedCrop=b.dataset.crop;game.selectedTool="plant";renderAll()});document.querySelectorAll("[data-buy]").forEach(b=>b.onclick=()=>buySeed(b.dataset.buy,+b.dataset.q))}else if(zone().type==="mine"){ss.innerHTML=`<button class="seed ${game.mineMode==="ore"?"active":""}" data-mine="ore">⛏️<br><small>Minerais</small></button><button class="seed ${game.mineMode==="mushroom"?"active":""}" data-mine="mushroom">🍄<br><small>Champignons</small></button>`;shop.innerHTML=`<div class="shop-line"><span>⛏️ <b>Charge d’extraction</b><small>Stock : ${game.mineSupplies.charge||0} · 120💰/u</small></span><span><button data-buy-mine="charge" data-q="1">×1</button><button data-buy-mine="charge" data-q="10">×10</button></span></div><div class="shop-line"><span>🍄 <b>Spore</b><small>Stock : ${game.mineSupplies.spore||0} · 90💰/u</small></span><span><button data-buy-mine="spore" data-q="1">×1</button><button data-buy-mine="spore" data-q="10">×10</button></span></div>`;document.querySelectorAll("[data-mine]").forEach(b=>b.onclick=()=>{game.mineMode=b.dataset.mine;game.selectedTool=game.mineMode==="ore"?"extract":"plant";renderAll()});document.querySelectorAll("[data-buy-mine]").forEach(b=>b.onclick=()=>buyMineSupply(b.dataset.buyMine,+b.dataset.q))}else{ss.innerHTML=`<div class="seed active">🌱<br><small>${game.forestSupplies.sapling||0}</small></div>`;shop.innerHTML=`<div class="shop-line"><span>🌱 <b>Jeune plant</b><small>Stock : ${game.forestSupplies.sapling||0} · 60💰/u · pousse ${Math.round(specialDuration("sapling")/60000)} min</small></span><span><button data-sap="1">Acheter ×1</button><button data-sap="10">×10</button></span></div>`;shop.querySelectorAll("[data-sap]").forEach(b=>b.onclick=()=>buySapling(+b.dataset.sap))}}
 function renderProduceBalance(){let shop=document.getElementById("seed-shop");if(shop&&!shop.querySelector(".produce-balance"))shop.insertAdjacentHTML("afterbegin",`<div class="produce-balance"><span>💰 Solde disponible</span><b>${game.money} pièces</b></div>`)}
 function renderStock(){
  let box=document.getElementById("stock");if(!box)return;
@@ -371,8 +464,11 @@ function renderStock(){
  box.querySelectorAll("[data-sell]").forEach(b=>b.onclick=()=>sellResource(b.dataset.sell,+b.dataset.q));
 }
 function renderDomain(){document.getElementById("domain").innerHTML=`<div class="compact"><span>${ZONES[game.currentZone].emoji} ${ZONES[game.currentZone].name}</span><b>${size()}×${size()}</b></div>${size()<FARM_SIZE?`<button id="expand-current" class="primary">🔓 Agrandir — ${EXPANSION_COSTS[size()]||20000}💰</button>`:'<p class="good">Zone au maximum ⭐</p>'}<button id="domain-map" class="primary">🗺️ Ouvrir la carte</button>`;let e=document.getElementById("expand-current");if(e)e.onclick=expandCurrent;document.getElementById("domain-map").onclick=openMap}
-function renderToolbar(){let type=zone().type;if((type==="farm"&&game.currentZone==="main")||type==="production"){document.getElementById("toolbar").innerHTML="";document.getElementById("quickbar").innerHTML="";return}let defs=type==="mine"?[['extract','⛏️','Extraire'],['plant','🍄','Cultiver'],['harvest','🧺','Récolter'],['build','🛠️','Construire'],['move','✋','Aménager']]:type==="forest"?[['plant','🌱','Planter'],['harvest','🪓','Couper'],['build','🛠️','Construire'],['move','✋','Aménager']]:[['plow','🪏','Labourer'],['plant','🌱','Planter'],['harvest','🧺','Récolter'],['build','🛠️','Construire'],['move','✋','Aménager']];document.getElementById("toolbar").innerHTML=defs.map(([k,e,n])=>`<button class="tool ${game.selectedTool===k?"active":""}" data-tool="${k}">${e}<span>${n}</span></button>`).join("");document.querySelectorAll("[data-tool]").forEach(b=>b.onclick=()=>{let tool=b.dataset.tool;game.selectedTool=tool;if(type==="mine"&&tool==="extract"){game.mineMode="ore";activatePanel("produce")}else if(type==="mine"&&tool==="plant"){game.mineMode="mushroom";activatePanel("produce")}else if(tool==="plant"){activatePanel("produce")}else if(tool==="build"){activatePanel("build")}else if(tool==="move"){activatePanel("arrange")}renderAll()});let qb=document.getElementById("quickbar");qb.innerHTML=type==="farm"?'<button data-quick="plow">🪏 Zone</button><button data-quick="plant">🌱 Zone</button><button data-quick="harvest">🧺 Prêtes</button>':'';qb.querySelectorAll("[data-quick]").forEach(b=>b.onclick=()=>quick(b.dataset.quick))}
-// V59.10 — Les commandes ne proposent que des ressources réellement accessibles au joueur.
+function renderToolbar(){
+ const toolbar=document.getElementById("toolbar"),qb=document.getElementById("quickbar");
+ if(toolbar) toolbar.innerHTML="";
+ if(qb) qb.innerHTML="";
+}
 function orderResourceUnlocked(k){
  if(k==="wheat")return cropUnlocked("wheat");
  if(k==="carrot")return cropUnlocked("carrot");
@@ -421,7 +517,7 @@ function renderProgression(){let b=document.getElementById("progression");if(!b)
 function craft(kind){let recipes={flour:{need:{wheat:2},out:2,label:"🥣 Farine"},cheese:{need:{milk:2},out:1,label:"🧀 Fromage"},ingot:{need:{iron:2},out:1,label:"🔩 Lingot"}}[kind];if(!recipes)return;let miss=Object.entries(recipes.need).filter(([k,q])=>(game.stock[k]||0)<q);if(miss.length)return missing(`⚙️ Il manque : `+miss.map(([k,q])=>`${q-(game.stock[k]||0)} ${STOCK_META[k]?.[1]||k}`).join(", "));for(let[k,q]of Object.entries(recipes.need))game.stock[k]-=q;game.stock[kind]+=recipes.out;save();renderAll();success(`${recipes.label} +${recipes.out}`)}
 function renderArrange(){let box=document.getElementById("arrange-catalog");if(!box)return;let groups=["Arbres","Animaux","Eau"];box.innerHTML=`<div class="arrange-actions arrange-tools"><button id="arrange-move" class="choice">✋ Déplacer<br><small>Cultures, bâtiments et décors</small></button><button id="arrange-rotate" class="choice">🔄 Tourner<br><small>Rotation de 90°</small></button><button id="arrange-delete" class="choice danger-soft">🗑️ Supprimer<br><small>Décors et animaux placés</small></button></div>`+groups.map(g=>`<h4>${g}</h4><div class="decor-grid">`+Object.entries(DECORS).filter(([,d])=>d.group===g).map(([k,d])=>{let locked=game.level<d.level;return `<button class="decor-choice ${locked?"locked-choice":""}" data-decor="${k}" ${locked?"disabled":""}><img src="${d.img}" alt=""><span><b>${d.name}</b><small>${locked?`🔒 Niveau ${d.level}`:`${d.price}💰 · niv.${d.level}`}</small></span></button>`}).join("")+`</div>`).join("");let mode=(id,tool,text)=>{let b=document.getElementById(id);if(b)b.onclick=()=>{game.selectedTool=tool;closeGameModal();msg(text);renderAll()}};mode("arrange-move","move","✋ Choisis l’élément à déplacer.");mode("arrange-rotate","rotate","🔄 Touche un décor ou un animal pour le tourner.");mode("arrange-delete","deleteDecor","🗑️ Touche le décor ou l’animal à supprimer.");box.querySelectorAll("[data-decor]").forEach(b=>b.onclick=()=>{game.selectedDecor=b.dataset.decor;game.selectedTool="decorate";closeGameModal();msg(`🌿 ${DECORS[game.selectedDecor].name} sélectionné : touche une case libre.`);renderAll()})}
 function renderUI(){let pt=document.getElementById("produce-title");if(pt)pt.textContent=zone().type==="mine"?"⛏️ Extraction & culture":zone().type==="forest"?"🌲 Sylviculture":"🌱 Cultures";
-document.getElementById("money").textContent=game.money;document.getElementById("level").textContent=game.level;document.getElementById("xp").textContent=game.xp;document.getElementById("zone-name").textContent=ZONES[game.currentZone].name;document.getElementById("zone-subtitle").textContent=zone().type==="mine"?"Extrais des ressources rares ou cultive des champignons.":zone().type==="forest"?"Fais pousser ton bois et prépare tes matériaux.":zone().type==="production"?"Installe ici les bâtiments de production et de transformation.":"Cultive, nourris et développe ton domaine.";const renders=[renderToolbar,renderZoneActions,renderProduceBalance,renderStock,renderOrders,renderBuild,renderAnimals,renderProduction,renderUpgrades,renderDomain,renderProgression,renderArrange,renderEditCatalog];for(const fn of renders){try{fn()}catch(e){console.error("V45 render",fn.name,e)}}}
+document.getElementById("money").textContent=game.money;document.getElementById("level").textContent=game.level;document.getElementById("xp").textContent=`${game.xp} / ${Math.round(80*Math.pow(game.level,1.18))}`;document.getElementById("zone-name").textContent=ZONES[game.currentZone].name;document.getElementById("zone-subtitle").textContent=zone().type==="mine"?"Extrais des ressources rares ou cultive des champignons.":zone().type==="forest"?"Fais pousser ton bois et prépare tes matériaux.":zone().type==="production"?"Installe ici les bâtiments de production et de transformation.":zone().type==="livestock"?"Regroupe ici tes animaux et développe ton élevage.":"Cultive, nourris et développe ton domaine.";const renders=[renderToolbar,renderZoneActions,renderProduceBalance,renderStock,renderOrders,renderBuild,renderAnimals,renderProduction,renderUpgrades,renderDomain,renderProgression,renderArrange,renderEditCatalog];for(const fn of renders){try{fn()}catch(e){console.error("V45 render",fn.name,e)}}}
 function renderAll(){production();renderFarm();renderPlayer();renderUI()}
 
 const startScreen=document.getElementById("start-screen");
@@ -550,20 +646,77 @@ function openSpecialZoneContext(x,y){
  let t=farm()[y][x],type=zone().type;mature(t);contextActions.innerHTML="";contextActions.classList.remove("hidden");
  let title=document.createElement("strong");title.className="context-title";
  if(type==="forest"){
-  title.textContent="🌲 Bois enchanté";contextActions.appendChild(title);
-  if(t.state==="grass")contextButton(`🌱 Planter · ${game.forestSupplies.sapling||0} plant(s)`,()=>{game.selectedTool="plant";if(act(x,y))closeContextActions()});
-  else if(t.state==="sapling")contextButton("⏳ Jeune arbre en croissance",()=>{},true);
-  else if(t.state==="tree")contextButton("🪓 Couper l’arbre",()=>{game.selectedTool="harvest";if(act(x,y))closeContextActions()});
+  title.textContent=t.state==="grass"?"🌿 Emplacement libre":t.state==="sapling"?"🌱 Jeune arbre":t.state==="tree"?"🌳 Arbre prêt":"🌲 Bois enchanté";contextActions.appendChild(title);
+  if(t.state==="grass"){
+   let qty=1;
+   const drawQty=()=>{
+    let cells=farmCellsFrom(x,y,v=>v.state==="grass"&&!v.building&&!v.decor),stock=game.forestSupplies.sapling||0,missingQty=Math.max(0,qty-stock),cost=missingQty*60;
+    contextActions.innerHTML="";contextActions.appendChild(title);
+    contextButton("➖",()=>{qty=Math.max(1,qty-1);drawQty()});
+    let n=document.createElement("span");n.className="edit-size-label";n.textContent=String(qty);contextActions.appendChild(n);
+    contextButton("➕",()=>{qty=Math.min(cells.length,qty+1);drawQty()},qty>=cells.length);
+    let label=missingQty>0?`🌱 Planter ${qty} · acheter ${missingQty} (${cost}💰)`: `🌱 Planter ${qty}`;
+    contextButton(label,()=>{
+     let availableCells=farmCellsFrom(x,y,v=>v.state==="grass"&&!v.building&&!v.decor),need=Math.max(0,qty-(game.forestSupplies.sapling||0)),buyCost=need*60;
+     if(need>0){if(game.money<buyCost)return missing(`💰 Il manque ${buyCost-game.money} pièce(s) pour acheter ${need} jeune(s) plant(s).`);game.money-=buyCost;game.forestSupplies.sapling=(game.forestSupplies.sapling||0)+need}
+     let wanted=Math.min(qty,game.forestSupplies.sapling||0,availableCells.length),old=game.selectedTool,count=0;
+     game.selectedTool="plant";for(const[xx,yy]of availableCells.slice(0,wanted))if(act(xx,yy,true))count++;game.selectedTool=old;
+     save();renderAll();closeContextActions();success(`🌱 ${count} jeune(s) plant(s) planté(s).`)
+    },cells.length<1||(missingQty>0&&game.money<cost));
+    contextButton("✕ Fermer",closeContextActions);
+   };drawQty();return;
+  }
+  else if(t.state==="sapling"){let left=Math.max(0,specialDuration("sapling")-(Date.now()-(t.startedAt||Date.now()))),sec=Math.ceil(left/1000),txt=sec>=60?`${Math.floor(sec/60)} min ${sec%60} s`:`${sec} s`;contextButton(`⏳ Jeune arbre en croissance · ${txt} restante${sec>1?"s":""}`,()=>{},true);}
+  else if(t.state==="tree"){
+   let qty=1;
+   const drawCutQty=()=>{
+    let trees=farmCellsFrom(x,y,v=>v.state==="tree"&&!v.building&&!v.decor);
+    contextActions.innerHTML="";contextActions.appendChild(title);
+    contextButton("➖",()=>{qty=Math.max(1,qty-1);drawCutQty()});
+    let n=document.createElement("span");n.className="edit-size-label";n.textContent=String(qty);contextActions.appendChild(n);
+    contextButton("➕",()=>{qty=Math.min(trees.length,qty+1);drawCutQty()},qty>=trees.length);
+    contextButton(`🪓 Couper ${qty}`,()=>{
+     let available=farmCellsFrom(x,y,v=>v.state==="tree"&&!v.building&&!v.decor),wanted=Math.min(qty,available.length),old=game.selectedTool,count=0;
+     game.selectedTool="harvest";for(const[xx,yy]of available.slice(0,wanted))if(act(xx,yy,true))count++;game.selectedTool=old;
+     save();renderAll();closeContextActions();success(`🪓 ${count} arbre(s) coupé(s).`)
+    },trees.length<1);
+    contextButton("✕ Fermer",closeContextActions);
+   };drawCutQty();return;
+  }
   else contextButton("ℹ️ Case occupée",()=>{},true);
  }else if(type==="mine"){
-  title.textContent="⛏️ Mine ancienne";contextActions.appendChild(title);
+  title.textContent=t.state==="grass"?"🌿 Emplacement libre":t.state==="mining"?"⛏️ Extraction":t.state==="mushroom"?"🍄 Champignons":(t.state==="ore"||t.state==="mushready")?"🧺 Ressource prête":"⛏️ Mine ancienne";contextActions.appendChild(title);
+  const supplyInfo=()=>game.mineMode==="mushroom"?{mode:"mushroom",tool:"plant",stock:"spore",price:90,emoji:"🍄",name:"spore(s)",verb:"Cultiver"}:{mode:"ore",tool:"extract",stock:"charge",price:120,emoji:"⛏️",name:"charge(s)",verb:"Extraire"};
+  const sellMineAll=()=>{let keys=["stone","iron","diamond","ruby","mushroom"],earned=0,count=0;for(const k of keys){let q=game.stock[k]||0;if(q>0){earned+=q*(SELL_PRICE[k]||0);count+=q;game.stock[k]=0}}if(!count)return missing("📦 Aucune ressource de la mine à vendre.");game.money+=earned;save();renderAll();closeContextActions();success(`💰 ${count} ressource(s) de la mine vendue(s) : +${earned} pièces.`)};
   if(t.state==="grass"){
-   contextButton(`⛏️ Extraire · ${game.mineSupplies.charge||0} charge(s)`,()=>{game.mineMode="ore";game.selectedTool="extract";if(act(x,y))closeContextActions()});
-   contextButton(`🍄 Cultiver · ${game.mineSupplies.spore||0} spore(s)`,()=>{game.mineMode="mushroom";game.selectedTool="plant";if(act(x,y))closeContextActions()});
-  }else if(t.state==="mining")contextButton("⏳ Extraction en cours",()=>{},true);
-  else if(t.state==="mushroom")contextButton("⏳ Champignons en croissance",()=>{},true);
-  else if(t.state==="ore"||t.state==="mushready")contextButton("🧺 Récolter",()=>{game.selectedTool="harvest";if(act(x,y))closeContextActions()});
-  else contextButton("ℹ️ Case occupée",()=>{},true);
+   let qty=1;
+   const drawMineQty=()=>{
+    let info=supplyInfo(),cells=farmCellsFrom(x,y,v=>v.state==="grass"&&!v.building&&!v.decor),stock=game.mineSupplies[info.stock]||0,missingQty=Math.max(0,qty-stock),cost=missingQty*info.price;
+    contextActions.innerHTML="";contextActions.appendChild(title);
+    contextButton("⛏️ Minerais",()=>{game.mineMode="ore";qty=1;drawMineQty()},game.mineMode==="ore");
+    contextButton("🍄 Champignons",()=>{game.mineMode="mushroom";qty=1;drawMineQty()},game.mineMode==="mushroom");
+    info=supplyInfo();cells=farmCellsFrom(x,y,v=>v.state==="grass"&&!v.building&&!v.decor);stock=game.mineSupplies[info.stock]||0;missingQty=Math.max(0,qty-stock);cost=missingQty*info.price;
+    contextButton("➖",()=>{qty=Math.max(1,qty-1);drawMineQty()});
+    let n=document.createElement("span");n.className="edit-size-label";n.textContent=String(qty);contextActions.appendChild(n);
+    contextButton("➕",()=>{qty=Math.min(cells.length,qty+1);drawMineQty()},qty>=cells.length);
+    let label=missingQty>0?`${info.emoji} ${info.verb} ${qty} · acheter ${missingQty} (${cost}💰)`: `${info.emoji} ${info.verb} ${qty}`;
+    const placeQty=(wantedQty)=>{let i=supplyInfo(),available=farmCellsFrom(x,y,v=>v.state==="grass"&&!v.building&&!v.decor),wanted=Math.min(wantedQty,available.length),need=Math.max(0,wanted-(game.mineSupplies[i.stock]||0)),buyCost=need*i.price;if(need>0){if(game.money<buyCost)return missing(`💰 Il manque ${buyCost-game.money} pièce(s) pour acheter ${need} ${i.name}.`);game.money-=buyCost;game.mineSupplies[i.stock]=(game.mineSupplies[i.stock]||0)+need}let oldTool=game.selectedTool,oldMode=game.mineMode,count=0;game.mineMode=i.mode;game.selectedTool=i.tool;for(const[xx,yy]of available.slice(0,wanted))if(act(xx,yy,true))count++;game.selectedTool=oldTool;game.mineMode=oldMode;save();renderAll();closeContextActions();success(`${i.emoji} ${count} emplacement(s) lancé(s).`)};
+    contextButton(label,()=>placeQty(qty),cells.length<1||(missingQty>0&&game.money<cost));
+    let maxAffordable=Math.min(cells.length,stock+Math.floor(game.money/info.price));
+    contextButton(`📍 Tout placer (${maxAffordable})`,()=>placeQty(maxAffordable),maxAffordable<1);
+    contextButton("💰 Tout vendre",sellMineAll);
+    contextButton("✕ Fermer",closeContextActions);
+   };drawMineQty();return;
+  }else if(t.state==="mining"||t.state==="mushroom"){
+   let kind=t.state,total=specialDuration(kind),left=Math.max(0,total-(Date.now()-(t.startedAt||Date.now()))),sec=Math.ceil(left/1000),txt=sec>=60?`${Math.floor(sec/60)} min ${sec%60} s`:`${sec} s`;
+   contextButton(`${kind==="mining"?"⛏️ Extraction":"🍄 Champignons"} en cours · ${txt} restante${sec>1?"s":""}`,()=>{},true);
+   contextButton("💰 Tout vendre",sellMineAll);
+  }else if(t.state==="ore"||t.state==="mushready"){
+   contextButton("🧺 Récolter",()=>{game.selectedTool="harvest";if(act(x,y))closeContextActions()});
+   contextButton("🧺 Tout récolter",()=>{let ready=farmCellsFrom(x,y,v=>v.state==="ore"||v.state==="mushready"),old=game.selectedTool,count=0;game.selectedTool="harvest";for(const[xx,yy]of ready)if(act(xx,yy,true))count++;game.selectedTool=old;save();renderAll();closeContextActions();success(`🧺 ${count} ressource(s) récoltée(s).`)});
+   contextButton("💰 Tout vendre",sellMineAll);
+  }else contextButton("ℹ️ Case occupée",()=>{},true);
+
  }
  contextButton("✕ Fermer",closeContextActions);
 }
