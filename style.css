@@ -590,8 +590,11 @@ body.modal-open{overflow:hidden}
 .edit-catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
 .edit-choice{border:1px solid #d6c779;border-radius:10px;background:#fffde6;padding:5px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:90px}
 .edit-choice.active{outline:3px solid #31572c}
+.edit-choice.locked{opacity:.56;filter:grayscale(1)}
+.edit-choice.buy{border-color:#d8b458;background:#fff9e4}
+.edit-choice.owned{border-color:#4f8a3d;background:#eef9e8}
 .edit-choice img{width:100%;height:58px;object-fit:contain}
-.edit-choice span{font-size:11px;font-weight:800}.edit-choice small{font-size:9px}
+.edit-choice span{font-size:11px;font-weight:800}.edit-choice small{font-size:9px;font-weight:700;color:#665f4b}
 /* Les anciens gros slots fixes ne sont plus l'interface principale sur la Ferme principale. */
 .farm-scene-main .farm-slot-layer{display:none!important}
 @media(max-width:600px){.edit-catalog-grid{grid-template-columns:repeat(2,1fr)}.edit-choice{min-height:76px}.edit-choice img{height:46px}}
