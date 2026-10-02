@@ -642,6 +642,23 @@ function farmPlantBatch(x,y,crop,limit){
  for(const[xx,yy]of cells.slice(0,wanted))if(act(xx,yy,true))count++;
  game.selectedTool=oldTool;game.selectedCrop=oldCrop;save();renderAll();closeContextActions();success(`${d.ready} ${count} case(s) de ${d.name} plantée(s).`)
 }
+function forestPlantBatch(x,y,limit){
+ let cells=farmCellsFrom(x,y,t=>t.state==="grass"&&!t.building&&!t.decor),stock=game.forestSupplies.sapling||0,wanted=limit===Infinity?cells.length:Math.min(limit,cells.length);
+ if(wanted<=0)return missing(`🌱 Pas assez de place pour planter ici.`);
+ let missingQty=Math.max(0,wanted-stock),cost=missingQty*60;
+ if(missingQty>0){if(game.money<cost)return missing(`💰 Il manque ${cost-game.money} pièce(s) pour acheter ${missingQty} jeune(s) plant(s).`);game.money-=cost;stock+=missingQty}
+ let count=0;
+ for(const[xx,yy]of cells.slice(0,wanted)){
+  if(stock<=0)break;
+  let t=farm()[yy][xx];
+  t.state="sapling";
+  t.startedAt=Date.now();
+  stock--;
+  count++;
+ }
+ game.forestSupplies.sapling=stock;
+ save();renderAll();closeContextActions();success(`🌱 ${count} jeune(s) plant(s) planté(s).`)
+}
 function openSpecialZoneContext(x,y){
  let t=farm()[y][x],type=zone().type;mature(t);contextActions.innerHTML="";contextActions.classList.remove("hidden");
  let title=document.createElement("strong");title.className="context-title";
@@ -659,9 +676,7 @@ function openSpecialZoneContext(x,y){
     contextButton(label,()=>{
      let availableCells=farmCellsFrom(x,y,v=>v.state==="grass"&&!v.building&&!v.decor),need=Math.max(0,qty-(game.forestSupplies.sapling||0)),buyCost=need*60;
      if(need>0){if(game.money<buyCost)return missing(`💰 Il manque ${buyCost-game.money} pièce(s) pour acheter ${need} jeune(s) plant(s).`);game.money-=buyCost;game.forestSupplies.sapling=(game.forestSupplies.sapling||0)+need}
-     let wanted=Math.min(qty,game.forestSupplies.sapling||0,availableCells.length),old=game.selectedTool,count=0;
-     game.selectedTool="plant";for(const[xx,yy]of availableCells.slice(0,wanted))if(act(xx,yy,true))count++;game.selectedTool=old;
-     save();renderAll();closeContextActions();success(`🌱 ${count} jeune(s) plant(s) planté(s).`)
+    forestPlantBatch(x,y,qty)
     },cells.length<1||(missingQty>0&&game.money<cost));
     contextButton("✕ Fermer",closeContextActions);
    };drawQty();return;
