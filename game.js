@@ -424,6 +424,12 @@ function renderUI(){let pt=document.getElementById("produce-title");if(pt)pt.tex
 document.getElementById("money").textContent=game.money;document.getElementById("level").textContent=game.level;document.getElementById("xp").textContent=game.xp;document.getElementById("zone-name").textContent=ZONES[game.currentZone].name;document.getElementById("zone-subtitle").textContent=zone().type==="mine"?"Extrais des ressources rares ou cultive des champignons.":zone().type==="forest"?"Fais pousser ton bois et prépare tes matériaux.":zone().type==="production"?"Installe ici les bâtiments de production et de transformation.":"Cultive, nourris et développe ton domaine.";const renders=[renderToolbar,renderZoneActions,renderProduceBalance,renderStock,renderOrders,renderBuild,renderAnimals,renderProduction,renderUpgrades,renderDomain,renderProgression,renderArrange,renderEditCatalog];for(const fn of renders){try{fn()}catch(e){console.error("V45 render",fn.name,e)}}}
 function renderAll(){production();renderFarm();renderPlayer();renderUI()}
 
+const startScreen=document.getElementById("start-screen");
+const startGameButton=document.getElementById("start-game");
+let gameReady=false;
+function enterGame(){if(!startScreen||!document.body.classList.contains("start-screen-active"))return;gameReady=true;startScreen.classList.add("exiting");document.body.classList.remove("start-screen-active");renderAll();setTimeout(()=>{startScreen.remove()},180)}
+if(startGameButton){startGameButton.onclick=enterGame;startGameButton.addEventListener("pointerup",e=>{if(e.pointerType==="touch")enterGame()})}
+
 let activePanel=null;
 const modal=document.getElementById("game-modal"), modalBody=document.getElementById("modal-body"), modalTitle=document.getElementById("modal-title");
 const panelSources=document.getElementById("panel-sources");
@@ -509,8 +515,8 @@ let playerVisual={x:0,y:0,dir:"front",frame:0,timer:null};
 function playerStartForZone(){let b=unlockBounds();playerVisual.x=Math.floor((b.start+b.end-1)/2);playerVisual.y=b.end-1}
 function playerSrc(dir,frame=0){return frame?`assets/character/base/player_${dir}_walk_${pad2(frame)}.png`:`assets/character/base/player_${dir}_idle.png`}
 function renderPlayer(){let farm=document.getElementById("farm");let el=document.getElementById("farm-player");if(!el){el=document.createElement("img");el.id="farm-player";el.className="farm-player";el.alt="Personnage";el.draggable=false;farm.appendChild(el)}el.src=playerSrc(playerVisual.dir,playerVisual.frame);el.style.setProperty("--px",playerVisual.x);el.style.setProperty("--py",playerVisual.y)}
-function movePlayer(dx,dy,dir){let nx=playerVisual.x+dx,ny=playerVisual.y+dy;if(!unlocked(nx,ny))return;playerVisual.x=nx;playerVisual.y=ny;playerVisual.dir=dir;playerVisual.frame=playerVisual.frame%PLAYER_FRAMES[dir]+1;renderPlayer();clearTimeout(playerVisual.timer);playerVisual.timer=setTimeout(()=>{playerVisual.frame=0;renderPlayer()},140)}
-window.addEventListener("keydown",e=>{if(!document.getElementById("game-modal").classList.contains("hidden")||!document.getElementById("map-modal").classList.contains("hidden"))return;let k=e.key.toLowerCase(),m={arrowup:[0,-1,"back"],w:[0,-1,"back"],z:[0,-1,"back"],arrowdown:[0,1,"front"],s:[0,1,"front"],arrowleft:[-1,0,"left"],a:[-1,0,"left"],q:[-1,0,"left"],arrowright:[1,0,"right"],d:[1,0,"right"]}[k];if(m){e.preventDefault();movePlayer(...m)}});
+function movePlayer(dx,dy,dir){if(!gameReady)return;let nx=playerVisual.x+dx,ny=playerVisual.y+dy;if(!unlocked(nx,ny))return;playerVisual.x=nx;playerVisual.y=ny;playerVisual.dir=dir;playerVisual.frame=playerVisual.frame%PLAYER_FRAMES[dir]+1;renderPlayer();clearTimeout(playerVisual.timer);playerVisual.timer=setTimeout(()=>{playerVisual.frame=0;renderPlayer()},140)}
+window.addEventListener("keydown",e=>{if(!gameReady||!document.getElementById("game-modal").classList.contains("hidden")||!document.getElementById("map-modal").classList.contains("hidden"))return;let k=e.key.toLowerCase(),m={arrowup:[0,-1,"back"],w:[0,-1,"back"],z:[0,-1,"back"],arrowdown:[0,1,"front"],s:[0,1,"front"],arrowleft:[-1,0,"left"],a:[-1,0,"left"],q:[-1,0,"left"],arrowright:[1,0,"right"],d:[1,0,"right"]}[k];if(m){e.preventDefault();movePlayer(...m)}});
 // V52.2 — commandes tactiles : appui bref = 1 case, appui maintenu = déplacement répété.
 const MOBILE_MOVES={up:[0,-1,"back"],down:[0,1,"front"],left:[-1,0,"left"],right:[1,0,"right"]};
 let mobileMoveDelay=null,mobileMoveRepeat=null;
