@@ -1,0 +1,11 @@
+V54 TEST INTEGRATION
+- Suppression des chemins et bordures du catalogue + suppression de leurs assets.
+- Eau, arbres et animaux conservés.
+- Paysage obligatoire sur mobile : écran portrait bloqué avec invitation à tourner le téléphone.
+- Labourage : toucher une case labourée avec l'outil Labourer la remet en herbe.
+- Notification de grange pleine conservée via le toast intégré.
+- Progression individuelle des cultures ajoutée : niveau 1→100, puis +1 étoile et retour niveau 1.
+- La quantité d'XP requise augmente progressivement à chaque niveau.
+- Le niveau/étoiles/XP de chaque culture est visible dans Produire.
+- Le nouveau fond du prototype est inclus comme assets/backgrounds/farm_main_reference.png.
+- Le prototype V5 reste une référence de quadrillage/slots ; il n'est pas injecté brutalement dans les autres zones afin de préserver la sauvegarde et les systèmes existants.

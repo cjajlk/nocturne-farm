@@ -28,14 +28,17 @@
     <button type="button" class="move-btn move-down" data-move="down" aria-label="Descendre">▼</button>
     <button type="button" class="move-btn move-right" data-move="right" aria-label="Aller à droite">▶</button>
   </div>
-  <p id="message" class="message">Choisis une action.</p>
+  <div id="context-actions" class="context-actions hidden" aria-live="polite"></div>
+  <p id="message" class="message">Touche une case du champ.</p>
 </section>
 
 <nav class="dock" aria-label="Menu principal">
   <button data-open="produce">🌱<span>Produire</span></button>
   <button data-open="stock">📦<span>Stock</span></button>
   <button data-open="manage">⚙️<span>Gestion</span></button>
+  <button data-open="edit" class="dock-edit-button">✏️<span>Édition</span></button>
 </nav>
+<button id="dock-toggle" class="dock-toggle" type="button" aria-expanded="true" aria-label="Afficher ou masquer le menu">☰</button>
 </main>
 
 <div id="game-modal" class="overlay hidden">
@@ -47,9 +50,10 @@
 
 <!-- Sources de contenu : cachées, réutilisées dans les fenêtres -->
 <div id="panel-sources" class="hidden">
-  <section data-source="produce">
-    <div class="menu-card"><h3 id="produce-title">🌱 Production</h3><div id="seed-selector" class="seed-selector"></div><div id="seed-shop"></div></div>
-    <div class="menu-card"><h3>⚙️ Transformation</h3><div id="production"></div></div>
+  <section data-source="produce" class="tabbed-panel">
+    <div class="panel-tabs"><button class="panel-tab active" data-paneltab="produce-crops">🌱 Cultures</button><button class="panel-tab" data-paneltab="produce-transform">⚙️ Transformation</button></div>
+    <div class="menu-card panel-tab-page active" data-panelpage="produce-crops"><h3 id="produce-title">🌱 Production</h3><div id="seed-selector" class="seed-selector"></div><div id="seed-shop"></div></div>
+    <div class="menu-card panel-tab-page" data-panelpage="produce-transform"><h3>⚙️ Transformation</h3><div id="production"></div></div>
   </section>
   <section data-source="build">
     <div class="menu-card">
@@ -57,13 +61,18 @@
       <div id="building-shop"></div>
     </div>
   </section>
-  <section data-source="stock">
-    <div class="menu-card"><h3>📦 Stock global</h3><div id="stock"></div><button id="sell-all" class="primary danger-soft">💰 Tout vendre</button></div><div class="menu-card"><h3>📋 Commandes</h3><p class="hint">Les commandes rapportent plus qu’une vente directe et donnent de l’XP.</p><div id="orders"></div></div>
+  <section data-source="stock" class="tabbed-panel">
+    <div class="panel-tabs"><button class="panel-tab active" data-paneltab="stock-items">📦 Stock</button><button class="panel-tab" data-paneltab="stock-orders">📋 Commandes</button></div>
+    <div class="menu-card panel-tab-page active" data-panelpage="stock-items"><h3>📦 Réserves du domaine</h3><p class="hint">Toutes les ressources sont regroupées ici. Les fournitures de plantation et d’extraction restent séparées du stock vendable.</p><div id="stock"></div><button id="sell-all" class="primary danger-soft">💰 Vendre toutes les ressources vendables</button></div>
+    <div class="menu-card panel-tab-page" data-panelpage="stock-orders"><h3>📋 Commandes</h3><p class="hint">Les commandes rapportent plus qu’une vente directe et donnent de l’XP.</p><div id="orders"></div></div>
   </section>
-  <section data-source="manage">
-    <div class="menu-card"><h3>⬆️ Améliorations de cette parcelle</h3><div id="upgrades"></div></div>
-    <div class="menu-card"><h3>🐾 Animaux & nourriture</h3><div id="animals"></div></div><div class="menu-card"><h3>⭐ Progression</h3><div id="progression"></div><div class="reset-game-box"><h4>🧹 Nouvelle partie</h4><p class="hint">Efface cette ferme et toutes ses sauvegardes locales sur cet appareil.</p><button id="reset-game" class="reset-game-btn">Réinitialiser la partie</button></div></div>
+  <section data-source="manage" class="tabbed-panel">
+    <div class="panel-tabs"><button class="panel-tab active" data-paneltab="manage-upgrades">⬆️ Améliorations</button><button class="panel-tab" data-paneltab="manage-animals">🐾 Animaux</button><button class="panel-tab" data-paneltab="manage-progress">⭐ Progression</button></div>
+    <div class="menu-card panel-tab-page active" data-panelpage="manage-upgrades"><h3>⬆️ Améliorations du domaine</h3><div id="upgrades"></div></div>
+    <div class="menu-card panel-tab-page" data-panelpage="manage-animals"><h3>🐾 Animaux & nourriture</h3><div id="animals"></div></div>
+    <div class="menu-card panel-tab-page" data-panelpage="manage-progress"><h3>⭐ Progression</h3><div id="progression"></div><div class="reset-game-box"><h4>🧹 Nouvelle partie</h4><p class="hint">Efface cette ferme et toutes ses sauvegardes locales sur cet appareil.</p><button id="reset-game" class="reset-game-btn">Réinitialiser la partie</button></div></div>
   </section>
+  <section data-source="edit"><div class="menu-card"><h3>✏️ Mode Édition</h3><div id="edit-catalog"></div></div></section>
   <section data-source="arrange">
     <div class="menu-card"><h3>✋ Aménager le domaine</h3><p class="hint">Les objets se débloquent avec ton niveau. Sélectionne un objet puis touche une case libre.</p><div id="arrange-catalog"></div></div>
   </section>
@@ -80,7 +89,7 @@
   </div>
 </div>
 
-<footer>Sauvegarde automatique 💾 — Pack V52.1 ÉCONOMIE + RESET</footer>
+<footer>Sauvegarde automatique 💾 — V59.03 · MODE ÉDITION</footer>
 <script src="game.js"></script>
 </body>
 </html>

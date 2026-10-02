@@ -359,6 +359,7 @@ body.modal-open{overflow:hidden}
     padding:2px 6px 0!important;
     gap:2px!important;
     display:flex!important;
+  }
   #mobile-move-pad{display:none!important}
   .quickbar{gap:2px!important;margin-bottom:1px!important;flex:0 0 auto!important}
   .quickbar button{padding:3px 4px!important;font-size:8px!important}
@@ -414,3 +415,435 @@ body.modal-open{overflow:hidden}
   .window{max-height:calc(100dvh - 10px)!important}
   .map-card{max-height:calc(100dvh - 10px)!important}
 }
+
+/* V54 — orientation paysage obligatoire */
+#portrait-lock{display:none}
+@media (orientation:portrait) and (max-width:1000px){
+  body::before{content:"↻ Tourne ton téléphone en paysage pour jouer";position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;background:#102b17;color:#fff;font-size:22px;font-weight:800}
+  body>*{visibility:hidden}
+  body::before{visibility:visible}
+}
+/* Référence du nouveau décor conservée dans assets/backgrounds/farm_main_reference.png.
+   Le vrai terrain reste fonctionnel sans forcer le décor sur les autres zones. */
+
+/* V55 — ferme principale : fond illustré + champ central + slots bâtiments */
+.farm.farm-scene-main{
+  display:block!important;position:relative!important;width:min(100%,1100px)!important;height:auto!important;
+  aspect-ratio:16/9!important;padding:0!important;gap:0!important;border-radius:0!important;overflow:hidden!important;
+  background:#17351d url('assets/backgrounds/farm_main_reference.png') center/100% 100% no-repeat!important;
+  box-shadow:none!important;touch-action:none;
+}
+.farm-scene-main .farm-field-grid{
+  position:absolute;left:22%;top:20%;width:50.42%;height:64%;
+  display:grid;grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(16,1fr);z-index:2;
+}
+.farm-scene-main .farm-field-grid .tile{min-width:0;min-height:0;border-right:1px solid rgba(255,255,255,.13);border-bottom:1px solid rgba(255,255,255,.13);background:transparent;border-radius:0;overflow:hidden}
+.farm-scene-main .farm-field-grid .tile:nth-child(16n+1){border-left:1px solid rgba(255,255,255,.13)}
+.farm-scene-main .farm-field-grid .tile:nth-child(-n+16){border-top:1px solid rgba(255,255,255,.13)}
+.farm-scene-main .farm-field-grid .tile.locked{background:rgba(30,40,28,.18)}
+.farm-scene-main .farm-field-grid .tile.plowed,.farm-scene-main .farm-field-grid .tile.planted,.farm-scene-main .farm-field-grid .tile.ready{background-size:125% 125%}
+.farm-slot-layer{position:absolute;inset:0;z-index:4;pointer-events:none}
+.farm-scene-slot{position:absolute;pointer-events:auto;border:2px dashed rgba(255,255,255,.72);background:rgba(70,160,70,.06);border-radius:10px;padding:0;cursor:pointer}
+.farm-scene-slot.occupied{border-color:transparent;background:transparent}
+.farm-scene-slot img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 4px rgba(0,0,0,.35));pointer-events:none}
+@media (orientation:landscape) and (max-width:1000px){
+  .farm.farm-scene-main{width:100%!important;max-width:none!important;height:auto!important;aspect-ratio:16/9!important}
+}
+
+/* V56 — cadrage paysage : la ferme principale reprend le comportement du prototype V5 */
+@media (orientation:landscape) and (max-width:1000px){
+  html,body{width:100vw!important;height:100dvh!important;min-height:100dvh!important;overflow:hidden!important}
+  body{display:flex!important;flex-direction:column!important}
+
+  .topbar{
+    width:100vw!important;max-width:none!important;flex:0 0 36px!important;min-height:36px!important;
+    padding:2px 10px!important;display:flex!important;flex-direction:row!important;align-items:center!important;
+    justify-content:space-between!important;gap:6px!important
+  }
+  .brand{display:flex!important;align-items:center!important;gap:8px!important;min-width:0!important}
+  .brand h1{font-size:16px!important;line-height:1!important;white-space:nowrap!important;margin:0!important}
+  .brand p{display:none!important}
+  .stats{display:flex!important;flex-wrap:nowrap!important;gap:3px!important;margin-left:auto!important}
+  .stats span{font-size:9px!important;padding:3px 5px!important}
+  .fullscreen-toggle{font-size:9px!important;padding:4px 6px!important;white-space:nowrap!important;margin:0!important}
+
+  .game-shell{
+    width:100vw!important;max-width:none!important;height:calc(100dvh - 36px)!important;min-height:0!important;
+    margin:0!important;padding:0!important;display:flex!important;flex-direction:column!important;gap:0!important;overflow:hidden!important
+  }
+  .game-panel{
+    width:100vw!important;max-width:none!important;height:100%!important;min-height:0!important;margin:0!important;padding:0!important;
+    border-radius:0!important;display:flex!important;flex-direction:column!important;gap:0!important;overflow:hidden!important;background:#17351d!important
+  }
+  .zonebar{flex:0 0 auto!important;margin:1px auto!important;padding:1px 5px!important;min-height:24px!important}
+  .zone-title{padding:4px 9px!important;font-size:11px!important;min-width:190px!important}
+  .toolbar{flex:0 0 auto!important;margin:0 auto 1px!important;gap:2px!important;position:static!important}
+  .toolbar .tool{min-width:0!important;width:auto!important;flex:0 0 auto!important;padding:3px 7px!important;min-height:27px!important;font-size:11px!important}
+  .toolbar .tool span{font-size:8px!important}
+  .quickbar{flex:0 0 auto!important;margin:0 auto 1px!important;gap:2px!important}
+  .quickbar button{flex:0 0 auto!important;padding:2px 8px!important;font-size:8px!important}
+
+  /* La scène garde son 16:9 et prend toute la largeur, comme le prototype. */
+  .farm.farm-scene-main{
+    flex:0 0 auto!important;width:100vw!important;min-width:100vw!important;max-width:none!important;
+    height:56.25vw!important;min-height:56.25vw!important;max-height:none!important;aspect-ratio:16/9!important;
+    margin:0!important;padding:0!important;border-radius:0!important;overflow:hidden!important
+  }
+
+  #message{flex:0 0 20px!important;min-height:20px!important;height:20px!important;margin:0!important;padding:3px 6px!important;font-size:9px!important;background:#17351d!important}
+  .dock{
+    position:fixed!important;left:50%!important;bottom:2px!important;transform:translateX(-50%)!important;
+    width:min(350px,58vw)!important;margin:0!important;padding:2px!important;z-index:100!important;border-radius:10px!important
+  }
+  .dock button{padding:2px!important;font-size:11px!important}
+  .dock button span{font-size:7px!important}
+  footer{display:none!important}
+}
+
+/* V57 — interactions contextuelles du champ */
+.context-actions{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;background:rgba(20,58,27,.96);color:#fff;padding:7px 10px;z-index:120;box-shadow:0 -4px 14px rgba(0,0,0,.2)}
+.context-actions.hidden{display:none!important}
+.context-title{font-size:13px;margin-right:4px;white-space:nowrap}
+.context-action-btn{border:0;border-radius:9px;background:#f5faee;color:#244522;padding:8px 11px;font-weight:700;font-size:12px;min-height:34px}
+.context-action-btn:disabled{opacity:.42;filter:grayscale(.6)}
+@media (orientation:landscape) and (max-width:1000px){
+  .game-panel>.toolbar,.game-panel>.quickbar{display:none!important}
+  .zonebar{position:absolute!important;top:38px!important;left:50%!important;transform:translateX(-50%)!important;z-index:90!important;background:rgba(245,250,238,.9)!important;border-radius:8px!important}
+  .farm.farm-scene-main{margin-top:0!important}
+  .context-actions{position:fixed!important;left:50%!important;bottom:35px!important;transform:translateX(-50%)!important;width:min(94vw,760px)!important;padding:5px 7px!important;border-radius:12px!important;z-index:150!important;flex-wrap:nowrap!important;overflow-x:auto!important;justify-content:flex-start!important}
+  .context-title{font-size:10px!important;flex:0 0 auto!important}
+  .context-action-btn{font-size:9px!important;padding:5px 8px!important;min-height:28px!important;flex:0 0 auto!important}
+}
+
+/* V58 — zone de production dédiée */
+.farm.production-scene{
+  display:block!important;position:relative!important;width:min(100%,1100px)!important;height:auto!important;aspect-ratio:16/9!important;
+  padding:0!important;gap:0!important;border-radius:0!important;overflow:hidden!important;
+  background:#314b27 url('assets/backgrounds/production-zone-01.png') center/100% 100% no-repeat!important;box-shadow:none!important;
+}
+.production-slot-layer{position:absolute;inset:0;z-index:5;pointer-events:none}
+.production-slot{position:absolute;pointer-events:auto;transform:translate(0,0);border:2px dashed rgba(255,255,255,.72);background:rgba(75,130,65,.08);border-radius:10px;padding:0;cursor:pointer}
+.production-slot.occupied{border-color:transparent;background:transparent}
+.production-slot img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 4px rgba(0,0,0,.35));pointer-events:none}
+@media (orientation:landscape) and (max-width:1000px){
+  .farm.production-scene{flex:0 0 auto!important;width:100vw!important;min-width:100vw!important;max-width:none!important;height:56.25vw!important;min-height:56.25vw!important;max-height:none!important;aspect-ratio:16/9!important;margin:0!important}
+}
+
+/* V55 — menus mobiles compacts + dock escamotable */
+.dock-toggle{position:fixed;right:12px;bottom:12px;z-index:42;width:42px;height:42px;border:0;border-radius:50%;background:#31572c;color:#fff;font-size:20px;font-weight:900;box-shadow:0 5px 18px #18350b66;cursor:pointer}
+.dock.dock-hidden{display:none!important}
+.panel-tabs{grid-column:1/-1;display:flex;gap:6px;position:sticky;top:0;z-index:3;padding:2px;background:#f8f3df}
+.panel-tab{flex:1;border:0;border-radius:10px;padding:9px 8px;background:#eee4c3;color:#68451f;font-weight:800;cursor:pointer}
+.panel-tab.active{background:#31572c;color:#fff}
+.panel-tab-page{display:none!important}
+.panel-tab-page.active{display:block!important}
+.window-body>section.tabbed-panel{display:block!important}
+@media(max-width:600px){
+ .dock-toggle{right:7px;bottom:7px;width:36px;height:36px;font-size:17px}
+ .window{width:calc(100vw - 8px)!important;max-height:calc(100dvh - 8px)!important;border-radius:14px!important}
+ .window-head{grid-template-columns:1fr 34px!important;padding:5px 8px!important;min-height:38px}
+ .window-head h2{text-align:left!important;font-size:18px!important;line-height:1.1!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .window-head button{font-size:20px!important}
+ .window-body{padding:6px!important}
+ .panel-tabs{gap:4px;padding:2px 0 6px}
+ .panel-tab{padding:7px 4px;font-size:11px;white-space:nowrap}
+ .menu-card{padding:7px!important;border-radius:11px!important}
+ .menu-card h3{font-size:15px;margin-bottom:6px!important}
+ .stock-row,.order-row,.shop-line,.mission-row{font-size:12px}
+}
+@media(max-height:520px) and (orientation:landscape) and (pointer:coarse){
+ .overlay{padding:2px!important;align-items:center!important}
+ .window{width:calc(100vw - 6px)!important;height:calc(100dvh - 6px)!important;max-height:none!important;border-width:2px!important}
+ .window-head{flex:0 0 34px;min-height:34px!important;padding:3px 8px!important}
+ .window-head h2{font-size:16px!important}
+ .window-body{flex:1 1 auto;min-height:0;overflow-y:auto!important;padding:5px 7px!important}
+ .panel-tabs{position:sticky;top:0}
+ .panel-tab{font-size:10px;padding:6px 4px}
+ .menu-card{padding:6px!important}
+ .menu-card h3{font-size:13px!important;margin-bottom:4px!important}
+ .hint{font-size:9px!important;margin:3px 0!important}
+ .dock-toggle{right:5px;bottom:5px;width:32px;height:32px;font-size:15px}
+}
+
+/* V59.01 — lisibilité mobile et interactions contextuelles */
+.progress-label{display:none!important}
+.window-head .close{display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;z-index:20!important;min-width:32px!important;min-height:32px!important}
+.production-slot.move-target{outline:2px solid #fff}
+@media(max-width:600px){.window-body{overflow-y:auto!important;-webkit-overflow-scrolling:touch}.window-head{position:sticky;top:0;z-index:10;background:#fff9c9}.context-actions{max-width:calc(100vw - 10px)}}
+
+
+/* V59.02 — champ épuré, fermeture uniforme */
+.window-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+.window-head h2{flex:1 1 auto!important;text-align:left!important;min-width:0!important}
+.window-head .close{position:static!important;margin-left:auto!important;flex:0 0 36px!important;width:36px!important;height:36px!important;padding:0!important}
+.farm-scene-slot:not(.occupied)::after{content:"+";display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:22px;font-weight:800;color:rgba(255,255,255,.82);text-shadow:0 1px 3px #0008}
+
+
+/* V59.03 — mode Édition libre de la ferme principale */
+.farm-edit-layer{position:absolute;inset:0;z-index:6;pointer-events:none}
+.farm-edit-layer.editing{pointer-events:none}
+.farm-edit-item{position:absolute;pointer-events:auto;border:0;background:transparent;padding:0;cursor:pointer;z-index:2}
+.farm-edit-item img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 4px rgba(0,0,0,.35));pointer-events:none}
+.farm-edit-layer.editing .farm-edit-item{outline:2px dashed rgba(255,255,255,.8);border-radius:8px}
+.edit-mode-badge{position:absolute;left:50%;top:9%;transform:translateX(-50%);background:rgba(34,79,35,.92);color:#fff;padding:5px 10px;border-radius:10px;font-size:11px;font-weight:800;pointer-events:none}
+.edit-status{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#eef5df;padding:7px 9px;border-radius:10px;margin-bottom:6px}
+.edit-catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.edit-choice{border:1px solid #d6c779;border-radius:10px;background:#fffde6;padding:5px;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:90px}
+.edit-choice.active{outline:3px solid #31572c}
+.edit-choice img{width:100%;height:58px;object-fit:contain}
+.edit-choice span{font-size:11px;font-weight:800}.edit-choice small{font-size:9px}
+/* Les anciens gros slots fixes ne sont plus l'interface principale sur la Ferme principale. */
+.farm-scene-main .farm-slot-layer{display:none!important}
+@media(max-width:600px){.edit-catalog-grid{grid-template-columns:repeat(2,1fr)}.edit-choice{min-height:76px}.edit-choice img{height:46px}}
+@media(max-height:520px) and (orientation:landscape){.edit-catalog-grid{grid-template-columns:repeat(5,1fr)}.edit-choice{min-height:65px}.edit-choice img{height:38px}.edit-choice span{font-size:9px}}
+
+
+/* V59.04 — le mode Édition fait partie de la barre escamotable, y compris en paysage mobile. */
+.dock .dock-edit-button{display:block!important}
+@media (orientation:landscape) and (max-width:1000px){
+  .dock:not(.dock-hidden){
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    flex-direction:initial!important;
+    left:50%!important;right:auto!important;top:auto!important;bottom:5px!important;
+    transform:translateX(-50%)!important;
+    width:min(48vw,430px)!important;
+    padding:4px!important;gap:3px!important;border-radius:13px!important;
+  }
+  .dock:not(.dock-hidden) button{min-width:0!important;width:auto!important;padding:4px 2px!important;font-size:15px!important;overflow:hidden!important}
+  .dock:not(.dock-hidden) button span{font-size:8px!important;white-space:nowrap!important}
+}
+body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!important}
+
+/* V59.05 — édition libre + quantité exacte */
+.farm-edit-layer.editing .farm-edit-item{touch-action:none;cursor:grab}
+.farm-edit-layer.editing .farm-edit-item:active{cursor:grabbing}
+.edit-size-label{display:inline-flex;align-items:center;justify-content:center;min-width:48px;font-weight:800;color:#fff;white-space:nowrap}
+.seed-qty-picker{display:flex;align-items:center;gap:5px;white-space:nowrap}
+.seed-qty-picker>button,.seed-qty-picker>input{min-height:30px;border:0;border-radius:9px;font:inherit;font-weight:800}
+.seed-qty-picker>button{padding:5px 10px;background:#f7fae9;color:#234d20}
+.seed-qty-picker>input{width:48px;text-align:center;background:#fff;color:#263d20;padding:4px}
+.seed-qty-picker .seed-buy-exact{background:#f7fae9;color:#234d20}
+@media(max-height:520px) and (orientation:landscape){.seed-qty-picker>button,.seed-qty-picker>input{min-height:27px;padding:3px 8px}.seed-qty-picker>input{width:44px}}
+
+/* V59.06 TEST ZONES — Prairie / Bois / Mine : même scène plein cadre 16:9 que la ferme principale */
+.farm.illustrated-zone{
+  display:block!important;position:relative!important;width:min(100%,1100px)!important;height:auto!important;
+  aspect-ratio:16/9!important;padding:0!important;gap:0!important;border-radius:0!important;overflow:hidden!important;
+  box-shadow:none!important;touch-action:none;background-position:center!important;background-size:100% 100%!important;background-repeat:no-repeat!important;
+}
+.farm.illustrated-prairie{background:#48783d url('assets/backgrounds/prairie-zone-01.png') center/100% 100% no-repeat!important}
+.farm.illustrated-forest{background:#28582e url('assets/backgrounds/fond_bois.png') center/100% 100% no-repeat!important}
+.farm.illustrated-mine{background:#444c41 url('assets/backgrounds/fond_mine.png') center/100% 100% no-repeat!important}
+.illustrated-field-grid{
+  position:absolute;left:22%;top:20%;width:50.42%;height:64%;
+  display:grid;grid-template-columns:repeat(16,1fr);grid-template-rows:repeat(16,1fr);z-index:2;
+}
+.illustrated-field-grid .tile{min-width:0;min-height:0;border-right:1px solid rgba(255,255,255,.13);border-bottom:1px solid rgba(255,255,255,.13);background:transparent;border-radius:0;overflow:hidden}
+.illustrated-field-grid .tile:nth-child(16n+1){border-left:1px solid rgba(255,255,255,.13)}
+.illustrated-field-grid .tile:nth-child(-n+16){border-top:1px solid rgba(255,255,255,.13)}
+.illustrated-field-grid .tile.locked{background:rgba(30,40,28,.18)}
+.illustrated-field-grid .tile.plowed,.illustrated-field-grid .tile.planted,.illustrated-field-grid .tile.ready{background-size:125% 125%}
+@media (orientation:landscape) and (max-width:1000px){
+  .farm.illustrated-zone{flex:0 0 auto!important;width:100vw!important;min-width:100vw!important;max-width:none!important;height:56.25vw!important;min-height:56.25vw!important;max-height:none!important;aspect-ratio:16/9!important;margin:0!important;padding:0!important;border-radius:0!important}
+}
+
+/* V59.09 — Stock moderne, lisible et tactile */
+.stock-dashboard{display:grid;gap:8px;margin-bottom:10px}.stock-summary,.stock-capacity{background:#f5fbe9;border:1px solid #d6e8bc;border-radius:13px;padding:10px}.stock-summary{display:flex;align-items:center;justify-content:space-between;gap:10px}.stock-summary span:first-child{display:grid;gap:2px}.stock-summary small,.stock-capacity small{font-size:10px;color:#68705d}.stock-money{font-weight:800;white-space:nowrap}.stock-capacity>div:first-child{display:flex;justify-content:space-between;gap:10px;font-size:12px}.stock-capacity-track{height:7px;background:#dfe8d3;border-radius:99px;overflow:hidden;margin:7px 0 4px}.stock-capacity-track i{display:block;height:100%;background:#5f8f35;border-radius:inherit;transition:width .2s ease}.stock-section{margin:10px 0 13px}.stock-section>h4{display:flex;align-items:center;justify-content:space-between;margin:0 0 6px;padding:6px 9px;background:#edf6df;border-radius:9px;color:#36521f;font-size:12px}.stock-section>h4 span{min-width:24px;text-align:center;background:#fff;border-radius:99px;padding:2px 7px}.stock-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.stock-card{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:7px;padding:8px;background:#fffdf7;border:1px solid #e4dcc4;border-radius:11px}.stock-card.empty-stock{opacity:.62}.stock-card-main{min-width:0;display:flex;align-items:center;gap:7px}.stock-icon{font-size:21px;line-height:1}.stock-card-text{min-width:0;display:grid;grid-template-columns:1fr auto;column-gap:6px;align-items:baseline}.stock-card-text b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}.stock-card-text strong{font-size:15px;color:#29471d}.stock-card-text small{grid-column:1/-1;color:#776d5a;font-size:9px;white-space:nowrap}.stock-card-actions{display:flex;gap:3px;flex:0 0 auto}.stock-card-actions button{border:0;border-radius:7px;padding:6px;background:#31572c;color:#fff;font-size:10px;font-weight:800;min-width:32px}.stock-card-actions button:disabled{opacity:.3}.stock-use-badge{font-size:9px;background:#eef1e7;padding:4px 6px;border-radius:99px;color:#66705b}.supply-card{min-height:48px}.stock-supplies{padding-top:2px;border-top:1px dashed #d7cfb9}.panel-tab-page[data-panelpage="stock-items"]>.danger-soft{width:100%;margin-top:8px}
+@media(max-width:600px){.stock-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-card{padding:7px 6px}.stock-card-text b{font-size:10px}.stock-card-text strong{font-size:14px}.stock-card-actions{flex-direction:column}.stock-card-actions button{padding:4px 5px}.stock-section{margin:8px 0 10px}}
+@media(max-width:360px){.stock-grid{grid-template-columns:1fr}.stock-card-actions{flex-direction:row}}
+
+/* V59.11 — Refonte visuelle Stock DESKTOP uniquement
+   Le rendu mobile/tablette paysage <=1000px reste inchangé. */
+@media (min-width:1001px) and (pointer:fine){
+  /* Le Stock devient un vrai panneau desktop large, sans toucher aux autres fenêtres. */
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]){
+    width:min(1180px,calc(100vw - 64px))!important;
+    max-width:1180px!important;
+    height:min(820px,calc(100vh - 54px))!important;
+    max-height:calc(100vh - 54px)!important;
+    border-radius:20px!important;
+  }
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]) .window-head{
+    min-height:52px!important;
+    padding:8px 16px!important;
+  }
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]) .window-head h2{
+    font-size:21px!important;
+  }
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]) .window-body{
+    padding:12px 16px 16px!important;
+    overflow-y:auto!important;
+  }
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]) .panel-tabs{
+    gap:10px;
+    padding:3px 0 10px;
+  }
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]) .panel-tab{
+    padding:10px 14px;
+    font-size:13px;
+    border-radius:12px;
+  }
+
+  /* Résumé compact en deux colonnes. */
+  .panel-tab-page[data-panelpage="stock-items"] .stock-dashboard{
+    grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-summary,
+  .panel-tab-page[data-panelpage="stock-items"] .stock-capacity{
+    min-height:82px;
+    padding:13px 15px;
+    border-radius:15px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-summary{
+    align-items:center;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-summary strong{
+    font-size:18px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-money{
+    font-size:18px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-capacity>div:first-child{
+    font-size:13px;
+  }
+
+  /* Les ressources utilisent réellement la largeur d'un écran PC. */
+  .panel-tab-page[data-panelpage="stock-items"] .stock-section{
+    margin:12px 0 16px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-section>h4{
+    padding:8px 11px;
+    margin-bottom:8px;
+    font-size:13px;
+    border-radius:11px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:9px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-card{
+    min-height:66px;
+    padding:10px 11px;
+    gap:9px;
+    border-radius:13px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-icon{
+    font-size:25px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-card-text b{
+    font-size:12px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-card-text strong{
+    font-size:17px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-card-text small{
+    font-size:10px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-card-actions{
+    gap:5px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-card-actions button{
+    min-width:38px;
+    padding:7px 7px;
+    font-size:10px;
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-use-badge{
+    font-size:10px;
+    padding:5px 7px;
+  }
+
+  /* Fournitures plus compactes : quatre cartes possibles par ligne. */
+  .panel-tab-page[data-panelpage="stock-items"] .stock-supplies .stock-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+  .panel-tab-page[data-panelpage="stock-items"] .stock-supplies .stock-card{
+    min-height:58px;
+  }
+
+  /* Commandes : plus aérées et adaptées au desktop. */
+  .panel-tab-page[data-panelpage="stock-orders"] .order-row{
+    min-height:74px;
+    padding:10px 14px;
+    font-size:13px;
+  }
+  .panel-tab-page[data-panelpage="stock-orders"] .order-row button{
+    min-width:112px;
+  }
+}
+
+
+/* V59.12 — Layout desktop / plein écran
+   Desktop souris uniquement. Les règles mobile validées restent inchangées. */
+@media (min-width:1001px) and (pointer:fine){
+  main.game-shell{
+    width:min(96vw,1600px)!important;
+    max-width:1600px!important;
+    margin:0 auto!important;
+    padding:16px 18px 92px!important;
+    display:block!important;
+  }
+  .game-panel{
+    width:100%!important;
+    max-width:1500px!important;
+    margin:0 auto!important;
+    padding:12px!important;
+  }
+  .zonebar{
+    width:min(420px,40vw)!important;
+    max-width:420px!important;
+    margin:0 auto 10px!important;
+  }
+  .farm:not(.farm-scene-main):not(.production-scene):not(.illustrated-zone){
+    width:min(76vw,calc(100vh - 245px),900px)!important;
+    max-width:900px!important;
+    height:auto!important;
+    aspect-ratio:1/1!important;
+    margin:0 auto!important;
+  }
+  .farm.farm-scene-main,
+  .farm.production-scene,
+  .farm.illustrated-zone{
+    width:min(92vw,1450px,calc((100vh - 190px) * 16 / 9))!important;
+    max-width:1450px!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    margin:0 auto!important;
+  }
+  .dock{
+    position:sticky!important;
+    left:auto!important;right:auto!important;top:auto!important;bottom:12px!important;
+    transform:none!important;
+    width:min(560px,60vw)!important;
+    margin:14px auto 0!important;
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:6px!important;
+    padding:6px!important;
+    border-radius:16px!important;
+    z-index:80!important;
+  }
+  .dock button{min-width:0!important;padding:8px 10px!important}
+  .dock-toggle{
+    position:fixed!important;left:18px!important;right:auto!important;bottom:18px!important
+  }
+  .context-actions{
+    width:min(1180px,calc(100vw - 56px))!important;
+    max-width:1180px!important;
+    margin-left:auto!important;margin-right:auto!important;
+  }
+  .window{
+    width:min(1040px,calc(100vw - 64px))!important;
+    max-width:1040px!important;
+    max-height:calc(100vh - 56px)!important;
+  }
+  .window-body{overflow-y:auto!important}
+  .window:has(.panel-tab-page[data-panelpage="stock-items"]){
+    width:min(1320px,calc(100vw - 64px))!important;
+    max-width:1320px!important;
+    height:min(860px,calc(100vh - 54px))!important;
+  }
+}
+:fullscreen main.game-shell{margin-left:auto!important;margin-right:auto!important}
