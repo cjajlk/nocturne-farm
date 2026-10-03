@@ -904,3 +904,12 @@ body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!impo
   background-image:linear-gradient(rgba(225,229,222,.82),rgba(225,229,222,.9)),var(--zone-bg)!important;
   filter:saturate(.55);
 }
+
+/* V59.15 — corrections test réel tablette/téléphone */
+.context-asset-btn{flex:0 0 92px;min-height:82px;border:0;border-radius:11px;background:#f5faee;color:#244522;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-weight:800;cursor:pointer}
+.context-asset-btn img{width:46px;height:42px;object-fit:contain;pointer-events:none;filter:drop-shadow(0 2px 2px #0003)}
+.context-asset-btn span{font-size:10px;line-height:1.05;text-align:center}.context-asset-btn small{font-size:9px;line-height:1;color:#52664e}.context-asset-btn:disabled{opacity:.45;filter:grayscale(.65)}
+.context-exact-picker{display:flex;align-items:center;gap:5px;flex:0 0 auto}.context-exact-picker>button:not(.context-action-btn){min-width:38px;min-height:38px;border:0;border-radius:9px;background:#f5faee;color:#244522;font-size:20px;font-weight:900}.context-exact-picker>span{min-width:34px;text-align:center;font-weight:900}
+.livestock-animal{transform:translate(-50%,-50%) scale(var(--animal-scale,1))}
+.farm-field-grid .tile,.illustrated-field-grid .tile,.production-slot{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+@media (pointer:coarse){.context-action-btn{min-height:40px!important}.context-asset-btn{flex-basis:98px;min-height:88px}.context-exact-picker>button:not(.context-action-btn){min-width:44px;min-height:44px}}
