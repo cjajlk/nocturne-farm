@@ -976,3 +976,28 @@ body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!impo
 .production-page-nav button{min-height:34px;padding:6px 12px}.production-page-nav button.active{background:#315d31;color:#fff}.production-page-nav span{font-size:12px;opacity:.7}
 .lexicon-card{width:100%;text-align:left;color:inherit;font:inherit;cursor:pointer}.lexicon-card.locked{opacity:.72}.lexicon-card.locked img{filter:grayscale(.75);opacity:.6}.lexicon-detail-window{width:min(720px,92vw);max-height:88vh}.lexicon-detail-hero{display:flex;align-items:center;gap:20px}.lexicon-detail-hero img{width:130px;height:110px;object-fit:contain}.lexicon-detail-hero b{font-size:24px}.lexicon-detail-window section{margin-top:14px;padding:12px 14px;border:1px solid rgba(91,116,58,.22);border-radius:14px;background:rgba(255,255,255,.5)}.lexicon-detail-window section h4,.lexicon-detail-window section p{margin:0}.lexicon-detail-window section p{margin-top:6px;line-height:1.45}
 @media(max-width:700px){.production-page-nav{bottom:1%;gap:4px}.production-page-nav span{display:none}.production-page-nav button{font-size:11px;padding:5px 8px}.lexicon-detail-hero img{width:90px;height:80px}.lexicon-detail-hero b{font-size:19px}}
+
+/* V59.22 — grandes parcelles raccordables : 16×16 -> 8×8 productions logiques */
+.farm-field-grid.large-plot-grid,
+.illustrated-field-grid.large-plot-grid{
+  display:grid!important;
+  grid-template-columns:repeat(8,1fr)!important;
+  grid-template-rows:repeat(8,1fr)!important;
+}
+.farm-scene-main .farm-field-grid.large-plot-grid .tile:nth-child(16n+1),
+.farm-scene-main .farm-field-grid.large-plot-grid .tile:nth-child(-n+16){border-left:0;border-top:0}
+.farm-scene-main .farm-field-grid.large-plot-grid .tile{
+  border-right:1px solid rgba(255,255,255,.11);
+  border-bottom:1px solid rgba(255,255,255,.11);
+}
+.large-plot-grid .tile{position:relative;overflow:hidden;min-width:0;min-height:0}
+.large-plot-grid .tile.resource-cluster{overflow:visible;z-index:2}
+.large-plot-grid .tile.resource-cluster .cluster-art{
+  position:absolute!important;width:58%!important;height:58%!important;max-width:none!important;max-height:none!important;
+  object-fit:contain!important;pointer-events:none!important;filter:drop-shadow(0 2px 2px #0003)!important;transform:none!important;
+}
+.large-plot-grid .tile.resource-cluster .cluster-art[data-cluster="0"]{left:-3%;top:-3%}
+.large-plot-grid .tile.resource-cluster .cluster-art[data-cluster="1"]{right:-3%;top:-3%}
+.large-plot-grid .tile.resource-cluster .cluster-art[data-cluster="2"]{left:-3%;bottom:-3%}
+.large-plot-grid .tile.resource-cluster .cluster-art[data-cluster="3"]{right:-3%;bottom:-3%}
+.large-plot-grid .tile.plowed{background-size:cover!important}
