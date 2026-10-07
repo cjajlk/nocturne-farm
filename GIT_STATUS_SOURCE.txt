@@ -1,0 +1,3 @@
+Le ZIP source PACK44 fourni à cette session ne contenait pas de dossier .git.
+PACK45 n'invente donc pas de métadonnées Git. Pour conserver le vrai historique, extraire ce pack dans le dépôt local E:\cj_project\nocturne-farm en conservant son .git existant.
+Aucun commit ni push effectué.

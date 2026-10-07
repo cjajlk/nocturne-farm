@@ -1001,3 +1001,90 @@ body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!impo
 .large-plot-grid .tile.resource-cluster .cluster-art[data-cluster="2"]{left:-3%;bottom:-3%}
 .large-plot-grid .tile.resource-cluster .cluster-art[data-cluster="3"]{right:-3%;bottom:-3%}
 .large-plot-grid .tile.plowed{background-size:cover!important}
+
+/* PACK 4 — Zone de pêche dédiée */
+.farm.illustrated-fishing{background:#286f78 url('assets/backgrounds/fishing-zone-01.png') center/100% 100% no-repeat!important}
+.fishing-animal-layer{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.fishing-fish{position:absolute;width:5.5%;height:auto;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 2px rgba(0,0,0,.28));pointer-events:auto;cursor:pointer;touch-action:manipulation}
+@media (max-width:900px){.fishing-fish{width:6.5%}}
+
+/* PACK31 — cycle jour/nuit visuel, sans effet gameplay */
+.farm{transition:filter 1.2s ease}
+.game-panel{transition:filter 1.2s ease}
+.game-panel.nf-day{filter:none}
+.game-panel.nf-dawn{filter:brightness(.92) saturate(.96) sepia(.08)}
+.game-panel.nf-dusk{filter:brightness(.78) saturate(.9) sepia(.12) hue-rotate(-5deg)}
+.game-panel.nf-night{filter:brightness(.52) saturate(.78) hue-rotate(8deg)}
+
+/* PACK34 — lisibilité du pourcentage en édition */
+.context-actions .scale-value,.edit-scale-value{font-weight:800;text-shadow:0 1px 0 rgba(255,255,255,.9);color:#2f2416}
+
+/* PACK41 — éclairage automatique des lanternes placées */
+.farm-edit-item[data-asset="lampNew01"] img{transition:filter .8s ease}
+.game-panel.nf-day .farm-edit-item[data-asset="lampNew01"] img{filter:drop-shadow(0 5px 4px rgba(0,0,0,.35))}
+.game-panel.nf-dawn .farm-edit-item[data-asset="lampNew01"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="lampNew01"] img{filter:brightness(1.12) drop-shadow(0 0 7px rgba(255,210,110,.72)) drop-shadow(0 5px 4px rgba(0,0,0,.35))}
+.game-panel.nf-night .farm-edit-item[data-asset="lampNew01"] img{filter:brightness(1.28) drop-shadow(0 0 12px rgba(255,205,90,.95)) drop-shadow(0 0 22px rgba(255,175,55,.58))}
+
+/* PACK43 — Ville */
+.city-dashboard{display:block!important;overflow:auto!important;padding:18px;box-sizing:border-box;background:linear-gradient(180deg,#ece4cc,#d7c49a)}
+.city-title{display:flex;flex-direction:column;gap:3px;text-align:center;margin-bottom:12px;color:#392d1e}.city-title b{font-size:1.15rem}
+.city-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.city-card{background:#fffdf1;border:1px solid #d8bd72;border-radius:14px;padding:10px;display:grid;gap:5px;box-shadow:0 2px 8px #0002}.city-icon{font-size:1.55rem}.city-card small{color:#6d604c}.city-card button{min-height:38px}
+@media(max-width:700px){.city-dashboard{padding:8px}.city-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.city-card{padding:7px;font-size:.78rem}.city-card button{font-size:.72rem}}
+
+/* PACK45 — Bureau des commandes / Dépôt */
+.city-orders,.city-depot{margin-top:10px;background:#fffdf1;border:1px solid #d8bd72;border-radius:14px;padding:10px;display:grid;gap:6px}
+.city-orders button{min-height:38px;text-align:left}.city-depot small{color:#6d604c}
+
+/* PACK46 — Ville graphique */
+.city-map-scene{position:relative!important;overflow:hidden!important;background:#1b2b1d!important;min-height:620px}
+.city-map-bg{position:absolute;inset:0;background:url("assets/backgrounds/city-zone-01.png") center center/cover no-repeat;z-index:0}
+.city-building-layer{position:absolute;inset:0;z-index:2;pointer-events:none}
+.city-building{position:absolute;transform:translate(-50%,-50%);border:0;background:transparent;padding:0;pointer-events:auto;cursor:pointer;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));transition:transform .16s ease,filter .16s ease}
+.city-building img{display:block;width:100%;height:auto}
+.city-building span,.city-building small{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;background:rgba(24,20,15,.82);color:#fff;border-radius:999px;padding:2px 8px;text-shadow:0 1px 2px #000}
+.city-building span{bottom:-9px;font-weight:800;font-size:.72rem}
+.city-building small{bottom:-28px;font-size:.62rem}
+.city-building:hover,.city-building:focus{transform:translate(-50%,-50%) scale(1.06);filter:drop-shadow(0 0 10px rgba(255,215,110,.7))}
+.city-building.locked{filter:grayscale(.55) brightness(.7) drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.city-building.built{filter:drop-shadow(0 3px 5px rgba(0,0,0,.42))}
+.city-collect-map{position:absolute;z-index:5;top:10px;left:50%;transform:translateX(-50%);border-radius:999px;padding:7px 16px;background:#fff8dc;border:1px solid #cba85b;font-weight:800}
+@media(max-width:700px){.city-map-scene{min-height:0}.city-building span{font-size:.54rem;padding:1px 5px}.city-building small{font-size:.48rem;bottom:-21px}.city-building span{bottom:-7px}.city-collect-map{top:5px;padding:4px 10px;font-size:.68rem}}
+
+/* PACK48 — Ville responsive + retour au verrouillage réel N10 */
+.city-map-scene{
+  display:flex!important;
+  align-items:center;
+  justify-content:center;
+  min-height:0!important;
+  height:auto!important;
+  padding:0!important;
+  background:#173b1a!important;
+}
+.city-map-viewport{
+  position:relative;
+  width:min(100%,1024px);
+  aspect-ratio:4/3;
+  overflow:hidden;
+  border-radius:16px;
+  background:#173b1a;
+}
+.city-map-bg{
+  position:absolute;
+  inset:0;
+  background:url("assets/backgrounds/city-zone-01.png") center center/contain no-repeat!important;
+  background-color:#173b1a;
+}
+.city-building-layer{position:absolute;inset:0;z-index:2;pointer-events:none}
+.city-collect-map{z-index:5}
+@media(max-width:800px){
+  .city-map-scene{width:100%!important;overflow:visible!important}
+  .city-map-viewport{
+    width:100%;
+    max-width:none;
+    aspect-ratio:4/3;
+    border-radius:10px;
+  }
+  .city-building span{font-size:.48rem;padding:1px 4px;bottom:-6px}
+  .city-building small{font-size:.42rem;bottom:-18px;padding:1px 4px}
+  .city-collect-map{top:4px;padding:3px 8px;font-size:.62rem}
+}
