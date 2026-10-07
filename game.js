@@ -998,7 +998,7 @@ function renderAll(){ensureCity();renderVisualOptions();production();renderFarm(
 const startScreen=document.getElementById("start-screen");
 const startGameButton=document.getElementById("start-game");
 let gameReady=false;
-function enterGame(){if(!startScreen||!document.body.classList.contains("start-screen-active"))return;gameReady=true;startScreen.classList.add("exiting");document.body.classList.remove("start-screen-active");renderAll();setTimeout(()=>{startScreen.remove()},180)}
+function enterGame(){if(!startScreen||!document.body.classList.contains("start-screen-active"))return;gameReady=true;startScreen.classList.add("exiting");document.body.classList.remove("start-screen-active");GameplayMusic.start();renderAll();setTimeout(()=>{startScreen.remove()},180)}
 if(startGameButton){startGameButton.onclick=enterGame;startGameButton.addEventListener("pointerup",e=>{if(e.pointerType==="touch")enterGame()})}
 
 let activePanel=null;
