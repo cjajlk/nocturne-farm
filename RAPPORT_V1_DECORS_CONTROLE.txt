@@ -1,0 +1,23 @@
+NOCTURNE FARM — CORRECTIF CATALOGUE V1 / CONTROLE (10 octobre 2026)
+
+MODIFICATIONS :
+- 50 décorations V1 officielles : noms, niveaux et prix repris du tableau maître verrouillé du 04/10/2026.
+- Achat unique dans le mode Édition ; poses suivantes, déplacements et dimensions sans frais.
+- Ancien achat par pose désactivé pour les nouveaux placements ; les placements anciens restent lisibles.
+- 9 éclairages V1 : niveaux 6, 12, 19, 25, 29, 34, 39, 43, 47 ; halo au crépuscule et nuit, sans carburant ni mécanique supplémentaire.
+- Assets actuels réutilisés en aperçu : 19 images distinctes pour les 50 objets. Ces visuels sont provisoires, ils ne constituent PAS les 50 artworks définitifs.
+
+TESTS REALISES :
+- Contrôle automatisé 50 IDs uniques, niveaux, 9 éclairages et leurs sélecteurs CSS : PASS.
+- Les 50 chemins des images d'aperçu : PASS (fichiers existants).
+- Achat unique, mode édition et phases jour/nuit : vérification statique du code PASS.
+- Syntaxe Node game.js et v1-design-data.js : PASS.
+- Dossier .git : 590/590 fichiers identiques au ZIP source. Aucun commit/push.
+
+NON VERIFIE :
+- Tests interactifs navigateur PC/mobile, car Chromium Playwright n'est pas installé ici.
+- Tests fonctionnels complets de progression 1-50, ressources de forêt/mine/pêche et sauvegarde/rechargement d'un profil isolé.
+- Affichage fidèle des 50 objets : seulement 19 aperçus distincts disponibles.
+- Ville mobile : en attente du déblocage de CJ, sans nouvelle modification.
+
+VERDICT : VERSION DE TRAVAIL V1, PAS ENCORE V1 FINALE.

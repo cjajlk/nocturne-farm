@@ -1088,3 +1088,29 @@ body.editing-farm .dock-edit-button{background:#31572c!important;color:#fff!impo
   .city-building small{font-size:.42rem;bottom:-18px;padding:1px 4px}
   .city-collect-map{top:4px;padding:3px 8px;font-size:.62rem}
 }
+
+/* Correctif Ville mobile paysage : ne pas superposer les étiquettes des bâtiments.
+   Les boutons et images restent présents, accessibles et cliquables.
+   Sur clavier, le nom réapparaît au focus. Aucune mécanique modifiée. */
+@media (max-width: 800px), (max-height: 500px) and (pointer: coarse) {
+  .city-map-viewport .city-building > span,
+  .city-map-viewport .city-building > small { display: none; }
+  .city-map-viewport .city-building:focus-visible > span {
+    display: block;
+    bottom: -7px;
+    z-index: 7;
+    font-size: .58rem;
+    max-width: 120px;
+    white-space: normal;
+    text-align: center;
+  }
+  .city-map-viewport .city-building:focus-visible { z-index: 6; outline: 2px solid #ffdd82; outline-offset: 2px; }
+}
+
+/* PACK 56 — icônes produits uniquement, sans effet sur les mécaniques */
+.pack56-product-icon{width:100%;height:100%;object-fit:contain;display:block}
+
+/* Les neuf éclairages V1 suivent exclusivement les phases visuelles. */
+.farm-edit-item[data-asset^="v1Decor"] img{transition:filter .8s ease}
+.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor06"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor12"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor19"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor25"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor29"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor34"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor39"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor43"] img,.game-panel.nf-dusk .farm-edit-item[data-asset="v1Decor47"] img{filter:brightness(1.12) drop-shadow(0 0 8px #ffd580)}
+.game-panel.nf-night .farm-edit-item[data-asset="v1Decor06"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor12"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor19"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor25"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor29"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor34"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor39"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor43"] img,.game-panel.nf-night .farm-edit-item[data-asset="v1Decor47"] img{filter:brightness(1.6) drop-shadow(0 0 12px #ffd580) drop-shadow(0 0 20px #e8a84e)}
